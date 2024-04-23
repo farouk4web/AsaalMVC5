@@ -1,0 +1,51 @@
+﻿@using Asaal.Resources
+
+@model Asaal.ViewModels.NewQuestionVM
+@{
+    if (Model.Question.Id == 0)
+    {
+        ViewBag.Title = ViewsKeys.newQuestion;
+    }
+    else
+    {
+        ViewBag.Title =  ViewsKeys.update + Model.Question.Title;
+    }
+}
+<div class="questionForm">
+    <div class="container">
+
+        <form action="/Questions/save" method="post">
+            <h2 class="text-center">@ViewBag.Title</h2>
+
+            <div class="form-group">
+                @Html.LabelFor(t => t.Question.Title)
+                @Html.TextBoxFor(t => t.Question.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(t => t.Question.Title)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(t => t.Question.SocietyId)
+                @Html.DropDownListFor(m => m.Question.SocietyId, new SelectList(Model.Societies, "Id", "Name"), ViewsKeys.chooseSociety, new { @class = "form-control" })
+                @Html.ValidationMessageFor(t => t.Question.SocietyId)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(c => c.Question.Content)
+                @Html.TextAreaFor(c => c.Question.Content, new { @class = "form-control" })
+                @Html.ValidationMessageFor(c => c.Question.Content)
+            </div>
+
+            <div class="form-group">
+                @Html.HiddenFor(m => m.Question.Id)
+                @Html.AntiForgeryToken()
+
+                <input type="submit" value="@ViewsKeys.save" class="btn siteBtn center-block" />
+            </div>
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,1168 @@
+﻿:root {
+    --color1: #DD4814;
+    --color2: #262120;
+    --linkColor: #3399cc;
+    
+    --mainFontColor: #333;
+    --whiteFontColor: #fff;
+    
+    --bgColor: #f2f2f2;
+    --whiteBgColor: #fff;
+    --borderColor: #ccc;
+}
+
+/*:root {
+    --color1: #DD4814;
+    --color2: #323538;
+    --linkColor: #3399cc;
+    
+    --mainFontColor: #c8c3bc;
+    --whiteFontColor: #fff;
+    
+    --bgColor: #1F2223;
+    --whiteBgColor: #181A1B;
+    --borderColor: #3e4446;
+}*/
+
+
+@font-face{
+   font-family: cairo;
+   src: url("../fonts/Cairo-VariableFont_wght.ttf");
+}
+
+body {
+    font-family: cairo;
+    background-color: var(--bgColor);
+    color: var(--mainFontColor);
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        width: auto
+    }
+}
+
+.form-control {
+    background-color: var(--bgColor) !important;
+    color: var(--mainFontColor) !important;
+    border-color: var(--borderColor);
+}
+.modeBtn {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: var(--color1);
+    color: var(--whiteFontColor);
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 23px;
+    cursor:pointer;
+    display: none;
+}
+
+hr {
+    border-color: var(--color1);
+}
+a {
+    color: var(--linkColor)
+}
+a:hover,
+a:focus {
+    color: var(--linkColor)
+}
+
+.field-validation-error {
+    color: orangered;
+}
+.input-validation-error {
+    border-color: orangered;
+}
+
+.ad {
+    background: var(--whiteBgColor);
+    text-align: center;
+    font-size: 22px;
+    padding: 15px;
+    margin: 20px 0;
+}
+
+.ad.square {
+    min-height: 300px;
+    padding-top: 100px;
+}
+
+.ad.rectangle {
+    min-height: 150px;
+    line-height: 150px;
+}
+
+@media (max-width: 767px) {
+    .ad.rectangle {
+        line-height: normal;
+    }
+}
+
+.siteBtn {
+    width: 250px;
+    background-color: var(--color1);
+    color: var(--whiteFontColor);
+    font-weight: bold;
+    border: 0;
+    letter-spacing: 1px;
+    transition: .5s ease;
+}
+
+.siteBtn:hover,
+.siteBtn:focus {
+    color: var(--whiteFontColor);
+    background-color: var(--color2);
+}
+
+img {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+}
+
+.sorryMsg {
+    background-color: var(--whiteBgColor);
+    padding: 20px 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+textarea {
+    min-width: 100%;
+    max-width: 100%;
+}
+.contentOfSite {
+}
+
+.bootbox .modal-content {
+    background-color: var(--whiteBgColor);
+}
+.bootbox .bootbox-body {
+    font-size: 22px;
+}
+.bootbox .btn {
+    padding: 0;
+    min-width: 100px;
+    height: 30px;
+    font-size: 16px;
+}
+.bootbox .btn-primary {
+    background-color: orangered;
+}
+
+@media(max-width: 767px ){
+    .siteBtn {
+        width: 100%;
+    }
+}
+
+/* start naavbar */
+.navbar {
+    border-radius: 0;
+    margin: 0;
+    border: 0;
+    max-height: 53px
+}
+.navbar-inverse {
+    background-color: var(--color1);
+    border: none
+}
+.navbar-inverse .navbar-brand {
+    color: var(--whiteFontColor);
+    padding: 10px;
+}
+.navbar-inverse .navbar-brand img {
+    width: 120px;
+    height: 40px;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: var(--whiteFontColor);
+    text-align:center;
+    font-size: 16px;
+    padding: 15px;
+    transition: .75s ease;
+}
+.navbar-inverse .navbar-nav > li > a.userInNavbar {
+    padding: 6px 15px;
+}
+.navbar-inverse .navbar-nav > li > a i {
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+    background-color: var(--color2);
+}
+
+.navbar .brandIcon {
+    display: none;
+}
+.navbar .brandIcon img {
+    height: auto;
+}
+
+.navbar .userPhoto {
+    margin: 0;
+    margin-right: 8px;
+}
+
+.navbar .notifications .dropdown-menu {
+    padding: 0;
+    min-width: 330px;
+    max-width: 330px;
+    max-height: 317px;
+    overflow: auto;
+    color: #333;
+    border-bottom: 2px solid var(--color2);
+    background-color: var(--color2)
+}
+
+.navbar .notifications .dropdown-menu li {
+    padding: 5px 10px;
+    border-bottom: 1px solid var(--bgColor);
+    background-color: var(--whiteBgColor);
+    position: relative;
+}
+.navbar .notifications .dropdown-menu li:hover {
+    background-color: var(--bgColor)
+}
+.navbar .notifications .dropdown-menu li a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.navbar .notifications .dropdown-menu li a { 
+    background-color: transparent
+}
+.navbar .notifications .dropdown-menu li span {
+    display: block;
+    color: var(--mainFontColor);
+}
+.navbar .notifications .dropdown-menu li span.zeroNotification{
+    padding: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    color: var(--mainFontColor);
+}
+.navbar .notifications .dropdown-menu li time {
+    color: #999;
+    font-size: 12px;
+    padding-top: 8px;
+}
+.navbar .notifications .dropdown-menu li time i {
+    font-size: 12px;
+}
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: var(--color1);
+}
+@media (max-width: 767px) {
+    .navbar {
+        max-height: none
+    }
+    .collapse {
+        display: block;
+    }
+    .navbar .societyTitle,
+    .navbar-header {
+        display: none;
+    }
+    .navbar .brandIcon {
+        display: inline-block;
+    }
+    .navbar-inverse .navbar-nav > li > a {
+        padding: 15px 10px;
+    }
+    .navbar-inverse .navbar-nav > li > a i {
+        margin-right: 0;
+    }
+    .navbar .userPhoto {
+        margin: 0;
+    }
+    ul.navbar-nav {
+        float: right;
+        margin: 0 -15px
+    }
+    ul.navbar-nav.navbar-right {
+        float: right
+    }
+    .navbar .nav li {
+        float: left
+    }
+
+    .navbar .notifications .dropdown-menu {
+        position: absolute;
+        top: 53px;
+        left: -230px;
+        min-width: 300px;
+        max-width: 300px;
+    }
+    .navbar .notifications .dropdown-menu li {
+        float: none
+    }
+
+}
+/* start footer*/
+footer {
+    padding: 20px;
+    background: var(--color2);
+    text-align: center;
+    color: var(--whiteFontColor);
+}
+footer b,
+footer i {
+    color: var(--color1);
+}
+/* end footer*/
+
+/* start error page */
+.errorPage {
+    padding: 50px 0;
+    text-align: center;
+}
+.errorPage h2 {
+    font-size: 35px;
+}
+.errorPage .alert {
+    padding: 20px;
+}
+.errorPage p {
+    font-size: 20px;
+}
+/* end error page */
+/* start questions ********************************************************************/
+.questions {
+    padding: 20px 0;
+}
+.question {
+    background-color: var(--whiteBgColor);
+    padding: 20px;
+    margin-bottom: 25px;
+}
+.question h4 a {
+    color: var(--mainFontColor);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.question .statistics p {
+    display: inline-block;
+    margin: 0 20px 5px;
+    font-size: 12px;
+}
+.question .statistics p span {
+    margin-left: 5px;
+    font-weight: bold;
+}
+.question .statistics p i {
+    color: var(--color1)
+}
+.question .statistics p a {
+    text-decoration: none;
+    letter-spacing: .75px;
+}
+.clickbody {
+    position: relative;
+}
+.clickbody a.overlayLink {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+/* end questions ************************************************************************/
+
+/* start questionInDtails ***************************************************************/
+.questionInDtails {
+    padding: 20px 0;
+}
+.questionInDtails .forOwner {
+    border-bottom: 2px solid var(--color1);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.questionInDtails .forOwner a {
+    margin: 0 10px;
+    font-weight: bold;
+    color: limegreen;
+}
+.questionInDtails .forOwner a:last-of-type {
+    color:red;
+}
+
+.questionInDtails .question p.lead {
+    padding: 30px 0 0;
+    font-size: 18px;
+}
+
+/* start answer Form */
+.questionInDtails #answerForm textarea,
+.questionInDtails .answers textarea {
+    font-size: 16px;
+    border-radius: 18px;
+    min-height: 190px;
+    max-height: 190px;
+}
+.questionInDtails #answerForm textarea{
+    background-color:var(--whiteBgColor) !important;
+}
+/* end answer Form */
+
+/* start answers section */
+.answers {
+
+}
+.answers > h2 {
+    background-color: var(--whiteBgColor);
+    padding: 15px;
+    display: inline-block;
+}
+.answer {
+    padding: 10px;
+    background: var(--whiteBgColor);
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.answer .dateAndDelete {
+    padding: 22px 10px;
+    text-align: right;
+}
+.answer .dateAndDelete .date {
+    display: inline-block;
+    font-weight: bold;
+}
+.answer .dateAndDelete .deleteBtn {
+    color: red;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.answer .answerBody {
+    overflow: auto;
+}
+
+.answer .answerBody .vote {
+    width: 10%;
+    float: left;
+    margin-left: -10px;
+}
+.answer .answerBody .vote i {
+    font-size: 25px;
+    cursor: pointer
+}
+.answer .answerBody .vote .active {
+    color: var(--color1);
+}
+.answer .answerBody .vote span {
+    display: block;
+}
+.answer .answerBody .content {
+    width: 90%;
+    float: left
+}
+
+.answer .answerBody .content p {
+    padding: 10px;
+    background: var(--bgColor);
+    min-height: 80px;
+}
+
+.replaysControls {
+    padding: 10px;
+}
+.replaysControls h5,
+.replaysControls h5 a{
+    display: inline-block;
+    cursor: pointer;
+    color: var(--color1);
+    font-weight: bold;
+}
+#replayForm {
+    width: 80%;
+    margin: auto;
+}
+#replayForm textarea {
+    min-height: 100px;
+    max-height: 100px;
+}
+.replays {
+    display: none
+}
+.replays .replay {
+    width: 80%;
+    margin: 10px 0 0 19%;
+    background: var(--bgColor);
+    border-radius: 0;
+}
+.replay .answerBody .content p {
+    background-color: var(--whiteBgColor);
+}   
+
+@media (max-width: 767px){
+    .questionInDtails .forOwner b {
+        display: block;
+    }
+
+    .questionInDtails  .header .title h2 {
+        font-size: 20px;
+    }
+
+    .questionInDtails .question p.lead {
+        font-size: 16px;
+    }
+
+    .answer .dateAndDelete {
+        padding: 0 10px 5px;
+        text-align: left
+    }
+    .answer .dateAndDelete .date{
+            font-weight: normal;
+    }
+    .replays .replay {
+        width: auto;
+        margin: 10px 0;
+    }
+
+    #replayForm {
+        width: auto;
+    }
+}
+/* end answers section */
+/* End questionInDtails **********************************************************/
+
+
+
+/* start side items */
+.sideItems {
+    background-color: var(--whiteBgColor);
+    margin: 20px 0;
+}
+.sideItems h4 {
+    margin: 0;
+    border-bottom: 2px solid var(--bgColor);
+    padding: 20px;
+}
+.sideItems .item {
+    background-color: var(--whiteBgColor);
+    margin: 0;
+    padding: 10px;
+    border-bottom: 3px solid var(--bgColor);
+    overflow: auto;
+}
+.sideItems .item img {
+    width: 40px;
+    float: left
+}
+.sideItems .item a {
+    text-decoration: none;
+    font-size: 13px;
+}
+.sideItems .item a:last-of-type {
+    color: var(--mainFontColor);
+}
+.sideItems.bestUsers .item a:last-of-type,
+.sideItems.highViewQuestions  .item a:last-of-type {
+    color: var(--linkColor);
+}
+/* end side items */
+
+
+/* start society section */
+.society {
+    background-color: var(--whiteBgColor);
+    padding: 10px 15px;
+    margin: 0 0 20px;
+}
+.society h2 a {
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--color1);
+}
+.society b {
+    display: block;
+    text-align: right;
+}
+
+
+.societies .intro {
+    background-color: var(--whiteBgColor);
+    border-bottom: 2px solid var(--color1);
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 10px;
+}
+.societies .society {
+    min-height: 150px;
+    max-height: 150px;
+    position: relative;
+}
+.societies .society .editLink {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: var(--color1);
+}
+.societies .society h4 {
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 16px
+}   
+/* end society section */
+
+/* start societyInDetails */
+
+.societyInDetails .editLink {
+    margin-left: 20px;
+    display: inline-block;
+}
+.societyInDetails .description {
+    border-bottom: 2px solid var(--color1);
+    margin: 20px 0;
+    padding: 20px;
+    background-color:var(--whiteBgColor);
+}
+.societyInDetails .description p {
+    font-size: 16px;
+    color: var(--mainFontColor);
+}
+.societyInDetails .ad:first-of-type {
+    margin:0;
+}
+
+@media (max-width: 767px){
+    .societyInDetails .sorryMsg {
+        margin: 20px 0;
+    }
+}
+/* end */
+
+/* start societyForm and Question Form */
+.societyForm ,
+.questionForm  {
+
+}
+.societyForm form,
+.questionForm form {
+    width: 60%;
+    background: var(--whiteBgColor);
+    padding: 20px;
+    margin: 20px auto;
+}
+.societyForm form .note p {
+    padding: 10px;
+    color: var(--ma);
+}
+.societyForm form .note p b {
+    background-color: var(--color1);
+    color: var(--whiteFontColor);
+    padding: 2px 10px;
+    display: inline-block;
+}
+.societyForm form textarea,
+.questionForm form textarea {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 250px;
+    max-height: 250px;
+    font-size: 16px;
+    padding: 20px;
+}
+.questionForm form textarea {
+    min-height: 350px;
+    max-height: 350px;
+}
+
+.questionForm form select {
+    padding: 0 6px;
+}
+
+@media (max-width: 767px) {
+    .societyForm form, .questionForm form {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+/* end*/
+
+
+/* start control panel */
+body.controlPanel {
+    background-image: url("/Content/Images/cpanel_bg.jpg");
+    background-size: cover;
+    color: var(--mainFontColor);
+}
+body.controlPanel .contentOfSite {
+    background-color: rgba(0, 0, 0, .8);
+    width: 100%;
+    height: 100%;
+}
+body.controlPanel h2 {
+    border-bottom: 5px dashed var(--whiteFontColor);
+    padding: 15px 0;
+    margin: 0 0 20px 0;
+    display: inline-block;
+    text-transform: capitalize;
+    color: var(--whiteFontColor);
+}
+body.controlPanel p.lead {
+    background-color: rgba(0,0,0, .5);
+    padding: 20px 10px;
+    border-radius: 25px;
+    color:var(--whiteFontColor);
+}
+
+
+.panelNavbar {
+    background-color: rgba(0,0,0, .5);
+    height: 100%;
+    padding: 0 0 50px 0;
+}
+.panelNavbar h3 {
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+    color: var(--color1);
+    background: rgba(0,0,0, 1);
+}
+.panelNavbar ul li a {
+    display: block;
+    padding: 15px;
+    color: #ccc;
+    text-decoration: none;
+    transition: 1s ease;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.panelNavbar ul li a:hover,
+.panelNavbar ul li a:focus {
+    background-color: var(--color1);
+    color: var(--whiteFontColor);
+}
+
+
+.siteSetting {
+    padding: 30px 0; 
+}
+.siteSetting h3 {
+    margin: 0 0 19px 0;
+}
+.changeFaviconAndLogo {
+    padding-bottom: 30px;
+}
+.changeFaviconAndLogo .alert {
+    display: none;
+}
+.changeFaviconAndLogo form,
+.changeLanguage form,
+.siteSetting form {
+    width: 70%;
+    margin: auto;
+    border: 5px solid var(--bgColor);
+    padding: 30px 20px;
+    background-color: var(--whiteBgColor);
+}
+.changeLanguage form select {
+    height: 50px;
+}
+.siteSetting .checkbox label {
+    padding-left: 30px;
+}
+
+
+.controlPanel .societyForm form {
+    width: 95%;
+    background: var(--whiteBgColor);
+}
+
+.controlPanel .societyForm form h2 {
+    color: var(--mainFontColor);
+    border-color: var(--color2);
+}
+
+
+.supervisors b,
+.users b,
+.admins b {
+    background-color: rgba(0,0,0, .5);
+    padding: 10px 25px;
+    display: inline-block;
+    border-radius: 25px;
+    color: var(--whiteFontColor);
+}
+.allUsers .user,
+.allCards .card {
+    position: relative;
+    margin-bottom: 20px;
+}
+.allCards .card {
+    padding: 20px;
+    background: var(--color1);
+    height: 150px;
+    color: var(--whiteFontColor);
+    border-radius: 25px;
+}
+.allCards .card span {
+    display: block;
+    text-align: right;
+}
+.allCards .card span:first-of-type {
+    font-size: 30px;
+    text-align: left;
+    font-weight: bold;
+}
+.allCards .card span:last-of-type {
+    position:absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 18px;
+}
+
+.allUsers {
+    overflow: auto;
+    overflow-x: hidden;
+    height: 390px;
+    margin-bottom: 40px;
+}
+.allUsers .user .thumbnail {
+    margin: 0;
+    background-color: var(--color2);
+    border: 1px solid var(--color2);
+}
+.allUsers .user a {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+}
+.allUsers .user img {
+    width: 100%;
+    height: 250px;
+}
+.user .thumbnail .caption {
+    color:var(--whiteFontColor);
+
+}
+
+
+.userAccountControlPanel {
+    background: rgba(0,0,0,.6);
+    padding: 20px;
+    color: var(--whiteFontColor);
+}
+.userAccountControlPanel .statistics {
+    padding: 20px;
+}
+.userAccountControlPanel .statistics .item {
+    margin-bottom: 15px
+}
+.userAccountControlPanel .statistics .item i {
+    color: var(--color1);
+    margin-right: 5px;
+    font-size: 20px;
+}
+.userAccountControlPanel .statistics .item span {
+    font-size: 18px;
+}
+.userAccountControlPanel .statistics .item b {
+    font-size: 20px;
+    padding: 5px;
+    background: #000;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+
+.roles span {
+    display: inline-block;
+    padding: 2px 20px;
+    border-radius: 10px;
+    color: var(--whiteFontColor);
+}
+
+.roles .adminsRole {
+    background-color: darkcyan;
+}
+
+.roles .supervisorsRole {
+    background-color: #34b143;
+}
+.userImg img {
+    width: 220px;
+    height: 220px;
+}
+
+#showPanelNavbar {
+    background: red;
+    padding: 5px 10px;
+    position: fixed;
+    top: 100px;
+    right: 10px;
+    z-index: 1;
+    display: none
+}
+@media (max-width: 767px){
+
+    .controlPanel .societyForm form {
+        width: 100%;
+    }
+
+    #showPanelNavbar {
+        display: inline-block;
+    }
+    .changeFaviconAndLogo form,
+    .changeLanguage form,
+    .siteSetting form {
+        width: auto;
+        border: 2px solid var(--bgColor);
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    .panelNavbar {
+        display: none;
+        background-color: #000;
+        overflow: auto;
+
+        position: fixed;
+        left: 0;
+        top: 53px;
+        z-index: 1030;
+    }
+}
+/* end of control panel */
+ 
+/* start userProfile */
+.userProfile {
+}
+.userProfile .userImg {
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.userProfile .userImg p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0, .5);
+    height: 20%;
+    width:100%;
+    margin: 0;
+    padding-top: 10px;
+}
+.userProfile .userImg p i {
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+}
+.userProfile i {
+    color: var(--color1);
+}
+.userProfile .mainInformation {
+    background-color: var(--whiteBgColor);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.userProfile .country {
+    font-size: 20px;
+}
+.userProfile #removeAccountBtn i{
+    color: var(--whiteFontColor);
+
+}
+.userProfile .roles {
+    margin: 10px 0;
+}
+
+.userProfile .actions,
+.userProfile .userStatistics {
+    background-color: var(--whiteBgColor);
+    padding: 20px;
+    margin: 20px 0;
+}
+.userProfile .allForms form {
+    background-color: var(--whiteBgColor);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.userProfile .allForms form .siteBtn {
+    display: block;
+    margin: auto
+}
+.userProfile .allForms form select {
+    padding: 0;
+}
+/* end of userProfile */
+/* start account form  */
+.accountForm {
+    padding-top: 100px;
+}
+.accountForm form {
+    width: 40%;
+    margin: auto;
+    background-color: var(--whiteBgColor);
+    padding: 100px 50px 50px;
+}
+.accountForm form .formHead hr {
+    margin: 0;
+    margin-bottom: -27px;
+    border-color: #ccc;
+}
+.accountForm form .formHead h3 {
+    display: block;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 22px;
+    width: 150px;
+    height: 50px;
+    line-height: 48px;
+    margin: auto;
+    background-color: var(--whiteBgColor);
+    font-size: 18px;
+}
+.accountForm form input {
+    padding: 25px;
+    border-radius: 30px;
+}
+.accountForm form button {
+    width: 100%;
+    padding: 15px;
+    border-radius: 30px;
+}
+.accountForm form select {
+    height: 50px;
+    padding: 0 20px;
+    border-radius: 30px;
+}
+.forgotPassword form .formHead h3 {
+    width: 200px;
+}
+.forgotPassword form p {
+    padding: 20px;
+    background: var(--bgColor);
+    margin: 20px 0;
+}
+
+@media (max-width: 767px) {
+    .accountForm {
+        padding-top: 50px;
+    }
+    .accountForm form {
+        width: auto;
+        padding: 90px 20px;
+    }
+}
+
+/* start forgotPasswordConfirmation */
+.accountConfirmation i {
+    font-size: 50px;
+    margin-top: 100px;
+}
+.accountConfirmation p.lead {
+    background-color: var(--whiteBgColor);
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+
+/* end of forgotPasswordConfirmation */
+/* end of account form  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.userProfile .userStatistics {
+    padding:0
+}
+.userProfile .userStatistics h4 {
+    cursor: pointer;
+    padding: 20px;
+    margin: 0;
+}
+
+.userProfile .userStatistics h4.active {
+    background-color: var(--color2);
+    color: var(--whiteFontColor);
+}
+.userProfile .userJobs .item {
+    display: none;
+}
+
+.userProfile .userJobs .item#questions{
+    display: block;
+}
+
+.userProfile .userJobs .item .goToLink a {
+    color: var(--color1);
+    font-size: 25px;
+    text-decoration: none;
+}
+.userProfile .answer .answerBody .content {
+    width: 100%;
+    float: initial;
+}
+.userProfile .replay .answerBody .content p {
+    background-color: var(--bgColor);
+}
+
+
+
+.pagination > li > a,
+.pagination > li > span {
+    background-color: var(--whiteBgColor);
+    border-color: var(--color1);
+    color: var(--mainFontColor);
+    font-weight: bold;
+}
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+    color: var(--whiteFontColor);
+    background-color: var(--color2);
+    border-color: var(--color1);
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    background-color: var(--color1);
+    border-color: var(--color1);
+}

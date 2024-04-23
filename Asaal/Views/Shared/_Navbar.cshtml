@@ -1,0 +1,43 @@
+﻿@using Asaal.Resources
+
+<div class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/Questions/" class="navbar-brand" title="@ViewsKeys.appName">
+                <img src="~/Content/Images/logo.png" alt="@ViewsKeys.appName" />
+            </a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+
+                <li class="brandIcon">
+                    <a href="/Questions/" title="@ViewsKeys.appName">
+                        <img src="~/Content/Images/logo.png" alt="@ViewsKeys.appName" />
+                    </a>
+                </li>
+
+                 <li>
+                    <a href="/Societies/Index" title="@ViewsKeys.societies">
+                        <i class="glyphicon glyphicon-th-large societyIcon"></i> 
+                        <span class="hidden-xs">@ViewsKeys.societies</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/Questions/new" title="@ViewsKeys.share">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span class="hidden-xs">@ViewsKeys.share</span>
+                    </a>
+                </li>
+
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>

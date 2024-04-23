@@ -1,0 +1,335 @@
+﻿@using Asaal.Resources
+@using Asaal.Models
+@using Microsoft.AspNet.Identity
+
+@model Asaal.ViewModels.QuestionInDetailsVM
+@{
+    ViewBag.Title = Model.Question.Title;
+}
+<div class="questionInDtails">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="question">
+
+                    @if (User.Identity.IsAuthenticated && User.Identity.GetUserId() == Model.Question.UserId || User.IsInRole(RoleName.Admins) || User.IsInRole(RoleName.Supervisors))
+                    {
+                        <div class="forOwner text-center">
+                            <b>@ViewsKeys.editYourQuestion </b>
+
+                            <a href="/Questions/Update/@Model.Question.Id">
+                                <i class="glyphicon glyphicon-pencil"></i> @ViewsKeys.update
+                            </a>
+
+                            <a href="#" class="deleteBtn" data-targetElement="question">
+                                <i class="glyphicon glyphicon-trash"></i> @ViewsKeys.delete
+                            </a>
+                        </div>
+
+                        <form action="/Questions/Delete/" method="post" id="questionDeleteForm" class="hidden">
+                            <div class="form-group">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="id" value="@Model.Question.Id" />
+                            </div>
+                        </form>
+                    }
+
+                    <div class="header">
+                        <div class="title">
+                            <h2>@Model.Question.Title</h2>
+                        </div>
+                    </div>
+
+                    <div class="ropData">
+                        <h4 class="fullName">
+                            <a href="/account/userprofile/@Model.Question.UserId">
+                                <img src="@Model.Question.User.ProfileImgSrc" alt="" class="img-circle" />
+                                @Model.Question.User.FullName
+                            </a>
+                        </h4>
+
+                        <div class="statistics">
+                            <p>
+                                <i class="glyphicon glyphicon-menu-hamburger"></i>
+                                <span>
+                                <a href="/societies/societyInDetails/@Model.Question.SocietyId">@Model.Question.Society.Name</a></span>
+                            </p>
+                            <p>
+                                <i class="glyphicon glyphicon-eye-open"></i>
+                                <span>@Model.Question.Views @ViewsKeys.view</span>
+                            </p>
+                            <p>
+                                <i class="glyphicon glyphicon-comment"></i>
+                                <span>@Model.Question.Answers.Count() @ViewsKeys.answer</span>
+                            </p>
+                            <p>
+                                <i class="glyphicon glyphicon-calendar"></i>
+                                <span>@Model.Question.PublishDate</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="clickbody">
+                        <p class="lead">
+                            @Model.Question.Content
+                        </p>
+                    </div>
+                </div>
+
+                <div class="ad rectangle">
+                    <p>
+                        @ViewsKeys.addYourAdMsg
+                        <a href="#">@ViewsKeys.contactUs</a>
+                    </p>
+                </div>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <form action="/" method="post" id="answerForm">
+                        <div class="form-group">
+                            @Html.TextAreaFor(m => m.AnswerDto.Content, new { @class = "form-control", rows = 8, placeholder = ViewsKeys.answerPlaceholder })
+                            @Html.ValidationMessageFor(m => m.AnswerDto.Content)
+                        </div>
+                        <div class="form-group text-center">
+                            @Html.HiddenFor(m => m.Question.Id)
+                            <button type="submit" class="btn siteBtn">@ViewsKeys.answer</button>
+                        </div>
+                    </form>
+
+                    <form action="/" method="post" id="replayForm" class="hidden">
+                        <div class="form-group">
+                            @Html.TextAreaFor(m => m.ReplayDto.Content, new { @class = "form-control", rows = 8, placeholder = ViewsKeys.replayPlaceholder })
+                            @Html.ValidationMessageFor(m => m.ReplayDto.Content)
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn siteBtn">@ViewsKeys.replay</button>
+                        </div>
+                    </form>
+                }
+                else
+                {
+                    <p class="sorryMsg">
+                        @ViewsKeys.signToAnswerMsg <a href="/Account/Login">@ViewsKeys.login</a>
+                    </p>
+                }
+
+                <div class="ad rectangle">
+                    <p>
+                        @ViewsKeys.addYourAdMsg
+                        <a href="#">@ViewsKeys.contactUs</a>
+                    </p>
+                </div>
+
+                <div class="answers">
+                    <h2 class="answersHeading">@ViewsKeys.answers</h2>
+                    @if (Model.Question.Answers.Count() == 0)
+                    {
+                        <p class="sorryMsg">
+                            @ViewsKeys.sorryMsg
+                        </p>
+                    }
+
+                    @foreach (var answer in Model.Question.Answers.OrderByDescending(m => m.Votes.Count()))
+                    {
+
+                        // loop all answers
+                        <div class="answer" data-id="@answer.Id" id="@answer.Id">
+                            <div class="row">
+                                <div class="col-sm-7">
+                                    <h4 class="fullName">
+                                        <img src="@answer.User.ProfileImgSrc" alt="Sorry" class="img-circle" />
+                                        <a href="/account/userprofile/@answer.UserId">@answer.User.FullName</a>
+                                    </h4>
+                                </div>
+
+                                <div class="col-sm-5">
+                                    <div class="dateAndDelete">
+                                        <span class="date">@answer.PublishDate</span>
+                                        @if (User.Identity.IsAuthenticated && User.Identity.GetUserId() == answer.UserId || User.IsInRole(RoleName.Admins) || User.IsInRole(RoleName.Supervisors))
+                                        {
+                                            <i class="glyphicon glyphicon-trash deleteBtn" data-elementId="@answer.Id" data-targetElement="answer"></i>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="answerBody">
+                                <div class="vote text-center">
+                                    @{
+                                        var activeUpBtn = "normal";
+                                        var activeDownBtn = "normal";
+
+                                        foreach (var vote in answer.Votes)
+                                        {
+                                            // user voted before
+                                            if (vote.UserId == User.Identity.GetUserId())
+                                            {
+                                                if (vote.IsGoodAnswer == true)
+                                                {
+                                                    // up vote
+                                                    activeUpBtn = "active";
+                                                }
+                                                else
+                                                {
+                                                    // down vote
+                                                    activeDownBtn = "active";
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                    <i class="glyphicon glyphicon-menu-up voteBtn @activeUpBtn" data-job="true"></i>
+                                    <span>
+                                        @{
+                                            var votesCount = answer.Votes.Where(m => m.IsGoodAnswer == true).Count() - answer.Votes.Where(m => m.IsGoodAnswer == false).Count();
+                                        }
+
+                                        @votesCount
+                                    </span>
+                                    <i class="glyphicon glyphicon-menu-down voteBtn @activeDownBtn" data-job="false"></i>
+                                </div>
+                                <div class="content">
+                                    <p>
+                                        @answer.Content
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="replaysControls row">
+                                <div class="col-xs-6">
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <h5 class="addReplay">@ViewsKeys.addReplay</h5>
+                                    }
+                                    else
+                                    {
+                                        <h5>
+                                            <a href="/account/login">@ViewsKeys.SingToAddReplay</a>
+                                        </h5>
+                                    }
+                                </div>
+                                <div class="col-xs-6 text-right">
+                                    <h5 class="showReplays">@answer.Replays.Count() @ViewsKeys.replay</h5>
+                                </div>
+                            </div>
+
+                            <div class="replays">
+                                @if (answer.Replays.Count() == 0)
+                                {
+                                    <p class="sorryMsg">
+                                        @ViewsKeys.sorryMsg
+                                    </p>
+                                }
+                                @foreach (var replay in answer.Replays)
+                                {
+                                    <div class="answer replay" data-id="@replay.Id">
+                                        <div class="row">
+                                            <div class="col-sm-7">
+                                                <h4 class="fullName">
+                                                    <img src="@replay.User.ProfileImgSrc" alt="Sorry" class="img-circle" />
+                                                    <a href="/account/userprofile/@replay.UserId">@replay.User.FullName</a>
+                                                </h4>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <div class="dateAndDelete">
+                                                    <span class="date">@replay.PublishDate</span>
+
+                                                    @if (User.Identity.IsAuthenticated && User.Identity.GetUserId() == replay.UserId || User.IsInRole(RoleName.Admins) || User.IsInRole(RoleName.Supervisors))
+                                                    {
+                                                        <i class="glyphicon glyphicon-trash deleteBtn" data-elementId="@replay.Id" data-targetElement="replay"></i>
+                                                    }
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="answerBody">
+                                            <div class="content">
+                                                <p>
+                                                    @replay.Content
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+                        </div>
+                    }
+                </div>
+
+                <div hidden>
+                    <span data-addReplay="@ViewsKeys.addReplay" id="addReplay"></span>
+                    <span data-replay="@ViewsKeys.replay" id="replay"></span>
+                    <span data-deleteWarningMsg="@ViewsKeys.deleteWarningMsg" id="deleteWarningMsg"></span>
+                    <span data-sorryMsgText="@ViewsKeys.sorryMsg" id="sorryMsgText"></span>
+                    <span data-youCantVoteMsg="@ViewsKeys.youCantVoteMsg" id="youCantVoteMsg"></span>
+                    <span data-youCantVoteAgainMsg="@ViewsKeys.youCantVoteAgainMsg" id="youCantVoteAgainMsg"></span>
+                    <span data-userOwnTheAnswerMsg="@ViewsKeys.userOwnTheAnswerMsg" id="userOwnTheAnswerMsg"></span>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+
+                <div class="society">
+                    <h2>
+                        <a href="/societies/societyIndetails/@Model.Question.SocietyId">@Model.Question.Society.Name</a>
+                    </h2>
+                    <p>
+                        @Model.Question.Society.Description
+                    </p>
+                    <b class="text-right">@Model.Question.Society.Questions.Count() @ViewsKeys.question</b>
+                </div>
+
+                <div class="ad">
+                    <p>
+                        @ViewsKeys.addYourAdMsg
+                        <a href="#">@ViewsKeys.contactUs</a>
+                    </p>
+                </div>
+
+                <div class="highViewQuestions sideItems">
+                    <h4>@ViewsKeys.highViewQuestions</h4>
+                    @if (Model.HighViewQuestion.Count() == 0)
+                    {
+                        <div class="item text-center">
+                            <b>
+                                @ViewsKeys.sorryMsg
+                            </b>
+                        </div>
+                    }
+                    else
+                    {
+                        foreach (var question in Model.HighViewQuestion)
+                        {
+                            <div class="item">
+                                <a href="/account/userprofile/@question.UserId">
+                                    <img src="@question.User.ProfileImgSrc" alt="user" class="img-circle" />
+                                </a>
+                                <a href="/questions/questionIndetails/@question.Id" class="questionTitle">
+                                    @question.Title
+                                </a>
+                            </div>
+                        }
+                    }
+
+
+                </div>
+
+                <div class="ad">
+                    <p>
+                        @ViewsKeys.addYourAdMsg
+                        <a href="#">@ViewsKeys.contactUs</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootbox")
+    @Scripts.Render("~/bundles/questionInDetails")
+}

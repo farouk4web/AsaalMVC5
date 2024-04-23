@@ -1,0 +1,149 @@
+﻿@using Asaal.Resources
+
+@model Asaal.ViewModels.QuestionsHomeVM
+@{
+    ViewBag.Title = ViewsKeys.questions;
+}
+
+<div class="questions">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                @if (Model.Questions.Count() == 0)
+                {
+                    <div class="sorryMsg">
+                        <p class="lead">
+                            @ViewsKeys.sorryMsg
+                            <br />
+                            <a href="/Questions/new">@ViewsKeys.newQuestion</a>
+                        </p>
+                    </div>
+                }
+                @foreach (var question in Model.Questions)
+                {
+                    <div class="question">
+                        <div class="header">
+                            <h4 class="fullName">
+                                <a href="/account/userProfile/@question.UserId">
+                                    <img src="@question.User.ProfileImgSrc" alt="" class="img-circle" />
+                                    @question.User.FullName
+                                </a>
+                            </h4>
+
+                            <div class="statistics">
+                                <p>
+                                    <i class="glyphicon glyphicon-menu-hamburger"></i>
+                                    <span>
+                                        <a href="/societies/societyInDetails/@question.SocietyId">@question.Society.Name</a>
+                                    </span>
+                                </p>
+                                <p>
+                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                    <span>@question.Views @ViewsKeys.view</span>
+                                </p>
+                                <p>
+                                    <i class="glyphicon glyphicon-comment"></i>
+                                    <span>@question.Answers.Count() @ViewsKeys.answer</span>
+                                </p>
+                                <p>
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                    <span>@question.PublishDate</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="clickbody">
+                            <a href="/questions/questionIndetails/@question.Id" class="overlayLink"></a>
+                            <h3>@question.Title</h3>
+                            <p class="questionBody">
+                                @question.Content
+                            </p>
+                        </div>
+                    </div>
+                }
+
+                <div id="pagenationNav" data-currentPageNumber="@ViewBag.currentPageNumber" data-countOfCollection="@ViewBag.countOfQuestions" data-elementsInPage="10"></div>
+                
+            </div>
+
+            <div class="col-sm-4">
+
+                <div class="society societyHero">
+                    <h4>@ViewsKeys.mostActive</h4>
+
+                    @if (Model.SocietyHero != null)
+                    {
+                        <h2>
+                            <a href="/Societies/SocietyIndetails/@Model.SocietyHero.Id">@Model.SocietyHero.Name</a>
+                        </h2>
+                        <p>
+                            @Model.SocietyHero.Description
+                        </p>
+                        <b>@Model.SocietyHero.Questions.Count() @ViewsKeys.question</b>
+                    }
+                    else
+                    {
+                        <h2>
+                            <a href="">@ViewsKeys.society</a>
+                        </h2>
+                        <p>
+                            @ViewsKeys.societyHeroPlaceholder
+                        </p>
+                        <b>0 @ViewsKeys.question</b>
+                    }
+
+                </div>
+
+                <div class="ad">
+                    <p>
+                        @ViewsKeys.addYourAdMsg
+                        <a href="#">@ViewsKeys.contactUs</a>
+                    </p>
+                </div>
+
+                <div class="lastAnswers sideItems">
+                    <h4>@ViewsKeys.lastAnswers</h4>
+
+                    @if (Model.LastAnswers.Count() == 0)
+                    {
+                        <div class="item text-center">
+                            <b>
+                                @ViewsKeys.sorryMsg
+                            </b>
+                        </div>
+                    }
+                    else
+                    {
+                        foreach (var comment in Model.LastAnswers)
+                        {
+                            <div class="item">
+                                <a href="/account/userprofile/@comment.UserId">
+                                    <img src="@comment.User.ProfileImgSrc" alt="user" class="img-circle" />
+                                </a>
+                                <span>
+                                    <a href="/account/userprofile/@comment.UserId">
+                                        @comment.User.FullName
+                                    </a>
+                                    <a href="/questions/questionIndetails/@comment.QuestionId/#@comment.Id" class="lastCommentContent">
+                                        @comment.Content
+                                    </a>
+                                </span>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <div class="ad">
+                    <p>
+                        @ViewsKeys.addYourAdMsg
+                        <a href="#">@ViewsKeys.contactUs</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/pagenationNav")
+}

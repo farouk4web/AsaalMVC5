@@ -1,0 +1,166 @@
+﻿@using Asaal.Resources
+@using Asaal.Models
+
+@model Asaal.ViewModels.SocietyInDetailsVM
+@{
+    ViewBag.Title = Model.Society.Name;
+}
+<div class="societyInDetails">
+    <div class="container">
+        
+        <h2>
+            @Model.Society.Name
+
+            @if (User.IsInRole(RoleName.Admins) || User.IsInRole(RoleName.Supervisors))
+            {
+                <a href="/ControlPanel/UpdateSociety/@Model.Society.Id" class="editLink" title="@ViewsKeys.update">
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+            }
+         </h2>
+ 
+        <div class="description">
+            <p>
+                @Model.Society.Description
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8">
+                @if (Model.Society.Questions.Count() == 0)
+                {
+                    <div class="sorryMsg">
+                        <p class="lead">
+                           @ViewsKeys.sorryMsg
+                            <br />
+                            <a href="/Questions/new">@ViewsKeys.newQuestion</a>
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    foreach (var question in Model.Society.Questions)
+                    {
+                        <div class="question">
+                            <div class="header">
+                                <h4 class="fullName">
+                                    <a href="/account/userProfile/@question.UserId">
+                                        <img src="@question.User.ProfileImgSrc" alt="" class="img-circle" />
+                                        @question.User.FullName
+                                    </a>
+                                </h4>
+                                <div class="statistics">
+                                    <p>
+                                        <i class="glyphicon glyphicon-menu-hamburger"></i>
+                                        <span>
+                                            <a href="/societies/societyInDetails/@question.SocietyId">@question.Society.Name</a>
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                        <span>@question.Views @ViewsKeys.view</span>
+                                    </p>
+                                    <p>
+                                        <i class="glyphicon glyphicon-comment"></i>
+                                        <span>@question.Answers.Count() @ViewsKeys.answer</span>
+                                    </p>
+                                    <p>
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                        <span>@question.PublishDate</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="clickbody">
+                                <a href="/questions/QuestionIndetails/@question.Id" class="overlayLink"></a>
+                                <h3>@question.Title</h3>
+
+                                <p class="questionBody">
+                                    @question.Content
+                                </p>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+
+            <div class="col-sm-4">
+
+                <div class="ad">
+                    <p>
+                        @ViewsKeys.addYourAdMsg
+                        <a href="#">@ViewsKeys.contactUs</a>
+                    </p>
+                </div>
+
+                <div class="bestUsers sideItems">
+                    <h4>@ViewsKeys.bestUsersInThisSocitey</h4>
+                    @if (Model.BestUsersInSociety.Count() == 0)
+                    {
+                        <div class="item text-center">
+                            <b>
+                                @ViewsKeys.sorryMsg
+                            </b>
+                        </div>
+                    }
+                    else
+                    {
+                        foreach (var user in Model.BestUsersInSociety)
+                        {
+                            <div class="item">
+                                <a href="/account/userProfile/@user.Id">
+                                    <img src="@user.ProfileImgSrc" alt="user" class="img-circle" />
+                                </a>
+                                <a href="/account/userprofile/@user.Id">
+                                    @user.FullName
+                                </a>
+                                <b class="center-block">
+                                    @user.Questions.Where(m => m.SocietyId == Model.Society.Id).Count() @ViewsKeys.question
+                                </b>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <div class="lastAnswers sideItems">
+                    <h4>@ViewsKeys.lastAnswersInThisSocitey</h4>
+                    @if (Model.LastAnswersInSociety.Count() == 0)
+                    {
+                        <div class="item text-center">
+                            <b>
+                                @ViewsKeys.sorryMsg
+                            </b>
+                        </div>
+                    }
+                    else
+                    {
+                        foreach (var comment in Model.LastAnswersInSociety)
+                        {
+                            <div class="item">
+                                <a href="/account/userprofile/@comment.UserId">
+                                    <img src="@comment.User.ProfileImgSrc" alt="user" class="img-circle" />
+                                </a>
+                                <span>
+                                    <a href="/account/userprofile/@comment.UserId">
+                                        @comment.User.FullName
+                                    </a>
+                                    <a href="/questions/questionIndetails/@comment.QuestionId/#@comment.Id" class="lastCommentContent">
+                                        @comment.Content
+                                    </a>
+                                </span>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <div class="ad">
+                    <p>
+                        @ViewsKeys.addYourAdMsg
+                        <a href="#">@ViewsKeys.contactUs</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

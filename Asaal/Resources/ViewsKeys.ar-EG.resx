@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="addReplay" xml:space="preserve">
+    <value>اضف رد</value>
+  </data>
+  <data name="addYourAdMsg" xml:space="preserve">
+    <value>مرحبا إذا اردت ان تضع إعلانك هنا انت فقط تحتاج الي ان </value>
+  </data>
+  <data name="answer" xml:space="preserve">
+    <value>إجابة</value>
+  </data>
+  <data name="answerPlaceholder" xml:space="preserve">
+    <value>أكتب إجابتك هنا ........</value>
+  </data>
+  <data name="appName" xml:space="preserve">
+    <value>أسال</value>
+  </data>
+  <data name="close" xml:space="preserve">
+    <value>اغلاق</value>
+  </data>
+  <data name="contactUs" xml:space="preserve">
+    <value>تواصل معنا</value>
+  </data>
+  <data name="controlPanel" xml:space="preserve">
+    <value>لوحة التحكم</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="lastAnswers" xml:space="preserve">
+    <value>آخر الإجابات</value>
+  </data>
+  <data name="login" xml:space="preserve">
+    <value>دخول</value>
+  </data>
+  <data name="logOff" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="mostActive" xml:space="preserve">
+    <value>الاكثر تفاعلآ</value>
+  </data>
+  <data name="newQuestion" xml:space="preserve">
+    <value>سؤال جديد</value>
+  </data>
+  <data name="question" xml:space="preserve">
+    <value>سؤال</value>
+  </data>
+  <data name="questions" xml:space="preserve">
+    <value>الأسئلة</value>
+  </data>
+  <data name="register" xml:space="preserve">
+    <value>جديد</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="share" xml:space="preserve">
+    <value>شارك</value>
+  </data>
+  <data name="signToAnswerMsg" xml:space="preserve">
+    <value>إن كنت تود إضافة إجابة رجاءآ سجل</value>
+  </data>
+  <data name="SingToAddReplay" xml:space="preserve">
+    <value>سجل دخولك إذا كنت تود الرد</value>
+  </data>
+  <data name="societies" xml:space="preserve">
+    <value>المجتمعات</value>
+  </data>
+  <data name="society" xml:space="preserve">
+    <value>مجتمع</value>
+  </data>
+  <data name="sorryMsg" xml:space="preserve">
+    <value>عذرآ, لم نجد اي شئ حتي الان </value>
+  </data>
+  <data name="update" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="view" xml:space="preserve">
+    <value>مشاهدة</value>
+  </data>
+  <data name="deleteWarningMsg" xml:space="preserve">
+    <value>هل انت متأكد انك تريد حذف هذا , تذكر عندما تؤكد حذفه لا يمكنك إسترداده مرة اخري</value>
+  </data>
+  <data name="deleteModalHeader" xml:space="preserve">
+    <value>الحذف | كن حذرا</value>
+  </data>
+  <data name="highViewQuestions" xml:space="preserve">
+    <value>الاسئلة الاعلي مشاهدة</value>
+  </data>
+  <data name="replay" xml:space="preserve">
+    <value>رد</value>
+  </data>
+  <data name="replayPlaceholder" xml:space="preserve">
+    <value>اكتب ردك علي هذه الاجابة هنا .........</value>
+  </data>
+  <data name="editYourQuestion" xml:space="preserve">
+    <value>قم بتحديث او حذف سؤالك</value>
+  </data>
+  <data name="accountConfirmationEmailbBodyP" xml:space="preserve">
+    <value>رجاءآ اكد حسابك بالضغط علي الرابط التالي</value>
+  </data>
+  <data name="accountConfirmationEmailFooterP1" xml:space="preserve">
+    <value>هذا البريد من </value>
+  </data>
+  <data name="accountConfirmationEmailFooterP2" xml:space="preserve">
+    <value>لقد ارسلنا لك هذه الرسالة لانك قمت بالتسجيل في موقعنا, اذا لم تكن انت لا تقلق كل ما عليك هو تجاهل  هذه الرسالة 😃</value>
+  </data>
+  <data name="accountConfirmationEmailSubject" xml:space="preserve">
+    <value>اكد حسابك</value>
+  </data>
+  <data name="addToAdmins" xml:space="preserve">
+    <value>اضف للمسؤلون</value>
+  </data>
+  <data name="addToSupervisors" xml:space="preserve">
+    <value>اضف للمشرفين</value>
+  </data>
+  <data name="admin" xml:space="preserve">
+    <value>مسئول</value>
+  </data>
+  <data name="admins" xml:space="preserve">
+    <value>المسؤلون</value>
+  </data>
+  <data name="alreadyHaveAnAccount" xml:space="preserve">
+    <value>بالفعل لدي حساب</value>
+  </data>
+  <data name="answers" xml:space="preserve">
+    <value>الاجابات</value>
+  </data>
+  <data name="answersWithReplays" xml:space="preserve">
+    <value>اجابات لديها ردود</value>
+  </data>
+  <data name="bestUsersInThisSocitey" xml:space="preserve">
+    <value>افضل المساهمين في هذا المجتمع</value>
+  </data>
+  <data name="changeDefaultLanguage" xml:space="preserve">
+    <value>تغير اللغة الافتراضية</value>
+  </data>
+  <data name="changeFavicon" xml:space="preserve">
+    <value>تغيير الايقونة</value>
+  </data>
+  <data name="changeFaviconAndLogo" xml:space="preserve">
+    <value>تغيير الايقونة والشعار</value>
+  </data>
+  <data name="changeFaviconErrorMsg" xml:space="preserve">
+    <value>يجب ان تختار الايقونة اولا قبل ان تضغط علي الزر</value>
+  </data>
+  <data name="changeFaviconLabel" xml:space="preserve">
+    <value>اختار ايقونة بصيغة "ico"</value>
+  </data>
+  <data name="changeFaviconNote" xml:space="preserve">
+    <value>الايقونة التي ستختارها يجب ان تكون بصيغة "ico" وللعلم مكان الايقونة يكون بجانب عنوان الموقع اعلي المتصفح</value>
+  </data>
+  <data name="changeLanguage" xml:space="preserve">
+    <value>تغيير اللغة </value>
+  </data>
+  <data name="changeLanguageNote" xml:space="preserve">
+    <value>اللغة التي ستختارها سيتم عرض الموقع بها بالكامل ما عدا المحتوي الذي ينشر من قبل المستخدمين , وهذا الإختيار لإعطاء المسؤليين القدرة علي تغيير واجهة الموقع واستهداف مجتمع معين</value>
+  </data>
+  <data name="changeLogo" xml:space="preserve">
+    <value>تغيير الشعار</value>
+  </data>
+  <data name="changeLogoErrorMsg" xml:space="preserve">
+    <value>يجب ان تختار الشعار اولا قبل ان تضغط علي الزر</value>
+  </data>
+  <data name="changeLogoNote" xml:space="preserve">
+    <value>الشعار الذي ستختاره يفضل ان يكون بصيغة "png" ويفضل ان يكون مقاسه 40 * 150  ووحد القياس بالبكسل ومكان الشعار يكون اول عنصر بالقائمة</value>
+  </data>
+  <data name="changePassword" xml:space="preserve">
+    <value>تغيير كلمة المرور</value>
+  </data>
+  <data name="changeProfilePicture" xml:space="preserve">
+    <value>تغيير صورة الحساب</value>
+  </data>
+  <data name="chooseCountry" xml:space="preserve">
+    <value>اختار الدولة</value>
+  </data>
+  <data name="chooseSociety" xml:space="preserve">
+    <value>اختار المجتمع</value>
+  </data>
+  <data name="chooseYourPicture" xml:space="preserve">
+    <value>اختار صورتك الجديدة</value>
+  </data>
+  <data name="confirmEmail" xml:space="preserve">
+    <value>اكد البريد الالكتروني</value>
+  </data>
+  <data name="confirmEmailMsg" xml:space="preserve">
+    <value>شكرآ لك علي تأكييد بريدك الالكترونيز رجاءآ</value>
+  </data>
+  <data name="confirmPassword" xml:space="preserve">
+    <value>تأكييد كلمة المرور</value>
+  </data>
+  <data name="content" xml:space="preserve">
+    <value>المحتوي</value>
+  </data>
+  <data name="country" xml:space="preserve">
+    <value>الدولة</value>
+  </data>
+  <data name="dashboard" xml:space="preserve">
+    <value>لوحة المعلومات</value>
+  </data>
+  <data name="description" xml:space="preserve">
+    <value>الوصف</value>
+  </data>
+  <data name="discriptionOfAdmins" xml:space="preserve">
+    <value>هنا ستجد كل المسؤلون وهم اشخاص لديهم صلاحيات اكثر من اي مستخدم ويتمم توظيفهم من قبل مسؤلون اخرين</value>
+  </data>
+  <data name="discriptionOfSupervisors" xml:space="preserve">
+    <value>هنا ستجد كل المشرفيين وهم اشخاص لديهم صلاحيات اكثر من المستخدم العادي ويتمم توظيفهم من قبل المسؤلون</value>
+  </data>
+  <data name="discriptionOfUsers" xml:space="preserve">
+    <value>هنا ستجد كل المستخدمين المسجلين بالموقع مسؤلون ومشرفين ومستخدمين عاديين</value>
+  </data>
+  <data name="email" xml:space="preserve">
+    <value>البريد الالكتروني</value>
+  </data>
+  <data name="errorPage" xml:space="preserve">
+    <value>صفحة خطأ</value>
+  </data>
+  <data name="errorPageParagraph" xml:space="preserve">
+    <value>هناك خطأ ما حدث اثناء معالجة طلبك, رجاءآ حاول مرة اخري في وقت لاحق</value>
+  </data>
+  <data name="faildToResetPasswordErrorMsg" xml:space="preserve">
+    <value>بريدك الالكتروني لم يتم تأكيده ولذلك لا يمكنك إعادة تعبيين كلمة المرور</value>
+  </data>
+  <data name="forAdminsOnlay" xml:space="preserve">
+    <value>للمسؤلين فقط</value>
+  </data>
+  <data name="forgotPasswordConfirmation" xml:space="preserve">
+    <value>تأييد نسيان كلمة السر</value>
+  </data>
+  <data name="forgotPasswordConfirmationMsg" xml:space="preserve">
+    <value>فريقنا ارسل رسالة إلي بريدك الالكتروني تحتوي علي رابط لإعادة تعيين كلمة المرور, اذهب الي بريك الالكتروني وتفقده</value>
+  </data>
+  <data name="forgotPasswordInfoMsg" xml:space="preserve">
+    <value>إذا كنت بالفعل نسيت كلمة مرورك فكل ما عليك هو انتكتب البريد الاليكتروني الذي استخدمته في عملية التسجبل وسوف تصلك رسالة علي بريدك تستطيع من خلالها ان تقوم بتعيين كلمة مرورك</value>
+  </data>
+  <data name="forgotYourPassword" xml:space="preserve">
+    <value>نسيت كلمة المرور؟</value>
+  </data>
+  <data name="fullName" xml:space="preserve">
+    <value>الاسم بالكامل</value>
+  </data>
+  <data name="hello" xml:space="preserve">
+    <value>مرحبآ</value>
+  </data>
+  <data name="incorrectEmailOrPasswordMsg" xml:space="preserve">
+    <value>البريد الذي ادخلته او كلمة المرور به خطأ, رجاءآ حاول مرة اخري</value>
+  </data>
+  <data name="lastAnswersInThisSocitey" xml:space="preserve">
+    <value>اخر الاجابات في هذا المجتمع</value>
+  </data>
+  <data name="loginHere" xml:space="preserve">
+    <value>سجل دخولك هنا</value>
+  </data>
+  <data name="max50" xml:space="preserve">
+    <value>اسمك يجب الا يزيد عن 50 حرف</value>
+  </data>
+  <data name="min4" xml:space="preserve">
+    <value>اسمك يجب ال يقل عن 4 حروف</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="newSociety" xml:space="preserve">
+    <value>مجتمع جديد</value>
+  </data>
+  <data name="notification" xml:space="preserve">
+    <value>إشعار</value>
+  </data>
+  <data name="notification4newAnswer2questionOwner" xml:space="preserve">
+    <value>اضاف اجابة علي سؤالك</value>
+  </data>
+  <data name="notification4newReplay2answerOwner" xml:space="preserve">
+    <value>اضاف رد علي إجابتك</value>
+  </data>
+  <data name="notification4newReplay2questionOwner" xml:space="preserve">
+    <value>اضاف رد علي إجابة بسؤالك</value>
+  </data>
+  <data name="notifications" xml:space="preserve">
+    <value>الاشعارات</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>او</value>
+  </data>
+  <data name="password" xml:space="preserve">
+    <value>كلمة المرور</value>
+  </data>
+  <data name="publishDate" xml:space="preserve">
+    <value>تاريخ النشر</value>
+  </data>
+  <data name="registerHere" xml:space="preserve">
+    <value>سجل هنا</value>
+  </data>
+  <data name="remember" xml:space="preserve">
+    <value>تذكر!</value>
+  </data>
+  <data name="removeAccount" xml:space="preserve">
+    <value>حذف الحساب</value>
+  </data>
+  <data name="removeAccountWarningMsg" xml:space="preserve">
+    <value>كن حذرآ انت ستقوم بحذف هذا المستخدم نهائيآ تذكر انك لا تستطيع التراجع عن حذفه, هل انت متأكد</value>
+  </data>
+  <data name="removeFromAdmins" xml:space="preserve">
+    <value>ازالة من المسؤلون</value>
+  </data>
+  <data name="removeFromSupervisiors" xml:space="preserve">
+    <value>ازالة من المشرفين</value>
+  </data>
+  <data name="required" xml:space="preserve">
+    <value>هذا الحقل مطلوب</value>
+  </data>
+  <data name="resetPassword" xml:space="preserve">
+    <value>إعادة تعيين كلمة المرور</value>
+  </data>
+  <data name="resetPasswordConfirmation" xml:space="preserve">
+    <value>تأكييد إاعادة تعيين كلمة المرور</value>
+  </data>
+  <data name="resetPasswordConfirmationMsg" xml:space="preserve">
+    <value>تم إعادة تعيين كلمة مرورك, رجاءآ</value>
+  </data>
+  <data name="resetPasswordEmailbBodyP" xml:space="preserve">
+    <value>لأإعادة تعيين كلمة مرورك رجاءآ قم بالضغط علي الرابط التالي</value>
+  </data>
+  <data name="resetPasswordEmailFooterP1" xml:space="preserve">
+    <value>هذه الرسالة من </value>
+  </data>
+  <data name="resetPasswordEmailFooterP2" xml:space="preserve">
+    <value>لقد ارسلنا لك هذه الرسالة لاننا تلقينا طلب في موقعنا لإعادة تعيين كلمة المرور حسابك , اذا لم تكن انت لا تقلق كل ما عليك هو تجاهل  هذه الرسالة 😃</value>
+  </data>
+  <data name="resetPasswordEmailSubject" xml:space="preserve">
+    <value>إعادة تعيين كلمة  المرور</value>
+  </data>
+  <data name="sendEmail" xml:space="preserve">
+    <value>ارسل لي رسالة علي البريد</value>
+  </data>
+  <data name="siteDescription4meta" xml:space="preserve">
+    <value>اسأل هو الموقع الافضل للبحث عن اجوبة اسألتك من خلال مجتمع متكامل</value>
+  </data>
+  <data name="siteDomain" xml:space="preserve">
+    <value>رابط الموقع</value>
+  </data>
+  <data name="societyHeroPlaceholder" xml:space="preserve">
+    <value>هنا سيتم وضع المجتمع الذي يحتوي علي اكبر عدد من الاسئلة</value>
+  </data>
+  <data name="societyNote" xml:space="preserve">
+    <value>عند انشائك مجتمع جديد لا تستطيع ان تقوم بحذفه وذلك لأنه عند الحذف سيتم حذف جميع الاسئلة المرتبطة بهذا المجتمع , ولكن يمكنك ان تقوم بتعديلها فيما بعد</value>
+  </data>
+  <data name="stringLength100_1000" xml:space="preserve">
+    <value>يجب ان تكون عدد الحروف اكبر من 100 حروف واقل من 1000</value>
+  </data>
+  <data name="stringLength150_250" xml:space="preserve">
+    <value>يجب ان تكون عدد الحروف اكبر من 150 حروف واقل من 250</value>
+  </data>
+  <data name="stringLength150_500" xml:space="preserve">
+    <value>يجب ان تكون عدد الحروف اكبر من 150 حروف واقل من 500</value>
+  </data>
+  <data name="stringLength20_250" xml:space="preserve">
+    <value>يجب ان تكون عدد الحروف اكبر من 20 حروف واقل من 250</value>
+  </data>
+  <data name="stringLength4_100" xml:space="preserve">
+    <value>يجب ان تكون عدد الحروف اكبر من 4 حروف واقل من 100</value>
+  </data>
+  <data name="stringLength5_1000" xml:space="preserve">
+    <value>يجب ان تكون عدد الحروف اكبر من 5 حروف واقل من 1000</value>
+  </data>
+  <data name="succesUpdateSiteDomainMsg" xml:space="preserve">
+    <value>تم تحديث رابط الموقع بنجاح</value>
+  </data>
+  <data name="succesUpdateSiteEmailMsg" xml:space="preserve">
+    <value>تم تحديث البريد الالكتروني وكلمة السر الخاصين بالموقع بمجاح</value>
+  </data>
+  <data name="supervisior" xml:space="preserve">
+    <value>مشرف</value>
+  </data>
+  <data name="supervisiors" xml:space="preserve">
+    <value>المشرفين</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="updateSiteDomain" xml:space="preserve">
+    <value>تحديث رابط الموقع</value>
+  </data>
+  <data name="updateSiteDomainNote" xml:space="preserve">
+    <value>يستعمل هذا الرابط بعض الاجزاء داخل رسائل البريد لذلك عليك بتحديثه دائما عند تغير الدومين المرتبط بالموقع</value>
+  </data>
+  <data name="updateSiteEmail" xml:space="preserve">
+    <value>تحديث البريد الالكتروني للموقع</value>
+  </data>
+  <data name="updateSiteEmailNote" xml:space="preserve">
+    <value>يستعمل هذا البريد الالكتروني في ارسال رسائل تاكيد الحساب ونسيان كلمة المرور يرجي التأكد من البيانات المدخلة حتي لا يحدث مشكلة عند ارسال الرسائل</value>
+  </data>
+  <data name="updateSiteSetting" xml:space="preserve">
+    <value>تحديث اعدادات الموقع</value>
+  </data>
+  <data name="user" xml:space="preserve">
+    <value>مستخدم</value>
+  </data>
+  <data name="userOwnTheAnswerMsg" xml:space="preserve">
+    <value>عذرآ , لا تستطيع التصويت علي اجابتك</value>
+  </data>
+  <data name="users" xml:space="preserve">
+    <value>المستخدمين</value>
+  </data>
+  <data name="views" xml:space="preserve">
+    <value>المشاهدات</value>
+  </data>
+  <data name="vlaidFullNameMsg" xml:space="preserve">
+    <value>تستطيع استخدام حروف عربية وانجليزية فقط</value>
+  </data>
+  <data name="votes" xml:space="preserve">
+    <value>الاصوات</value>
+  </data>
+  <data name="warning" xml:space="preserve">
+    <value>تحذير</value>
+  </data>
+  <data name="youCantVoteAgainMsg" xml:space="preserve">
+    <value>انت لا تستطيع ان تقوم بالتصويت مرتين عل نفس الاجابة</value>
+  </data>
+  <data name="youCantVoteMsg" xml:space="preserve">
+    <value>ان كنت تريد التصويت علي الإجابة عليك بالتسجيل اولا</value>
+  </data>
+  <data name="confirmPasswordErrorMsg" xml:space="preserve">
+    <value>كلمة المرور و تأكيد كلمة المرور غير متطابقتان</value>
+  </data>
+  <data name="emailNotValid" xml:space="preserve">
+    <value>هذا البريد ليس عنوان بريد إلكتروني صالحًا.</value>
+  </data>
+  <data name="rememberMe" xml:space="preserve">
+    <value>تذكرني؟</value>
+  </data>
+  <data name="stringLength6_100" xml:space="preserve">
+    <value>يجب ان يكون مجموع حروف كلمة السر ما بين 6 الي 100</value>
+  </data>
+  <data name="currentPassword" xml:space="preserve">
+    <value>كلمة المرور الحالية</value>
+  </data>
+  <data name="dontHaveAccount" xml:space="preserve">
+    <value>لا تملك حساب؟</value>
+  </data>
+  <data name="newPassword" xml:space="preserve">
+    <value>كلمة المرور الجديدة</value>
+  </data>
+  <data name="by" xml:space="preserve">
+    <value>بواسطة</value>
+  </data>
+  <data name="developedWith" xml:space="preserve">
+    <value>طور بكل </value>
+  </data>
+  <data name="developerName" xml:space="preserve">
+    <value>فاروق عبدالحميد</value>
+  </data>
+  <data name="chooseLogo" xml:space="preserve">
+    <value>اختار الشعار</value>
+  </data>
+  <data name="sendEmailsBySite" xml:space="preserve">
+    <value>إرسال رسائل بالبريد الاليكتروني</value>
+  </data>
+  <data name="SendEmailsOrNot" xml:space="preserve">
+    <value>إرسال رسائل بالبريد او إلغائها</value>
+  </data>
+  <data name="succesUpdateSendEmailOrNotMsg" xml:space="preserve">
+    <value>تم تحديث هذا الإعداد بنجاح</value>
+  </data>
+  <data name="updateSendEmailOrNotNote" xml:space="preserve">
+    <value>هذا الإعداد يعطيك القدرة علي جعل الموقع يرسل رسائل بريد اليكتروني لتفعيل حسابات المستخدمين او لا</value>
+  </data>
+  <data name="RealEmailErrMsg" xml:space="preserve">
+    <value>يمكنك استخدام   [gmail, hotmail, outlook, yahoo] فقط </value>
+  </data>
+  <data name="doVote" xml:space="preserve">
+    <value>تصويت</value>
+  </data>
+  <data name="updateMyInfo" xml:space="preserve">
+    <value>تحديث بياناتي</value>
+  </data>
+  <data name="succesChangePasswordMsg" xml:space="preserve">
+    <value>تم تحديث كلمة السر بنجاح</value>
+  </data>
+  <data name="succesChangePhotoMsg" xml:space="preserve">
+    <value>تم تحديث صورتك الشخصية بنجاح</value>
+  </data>
+  <data name="succesUpdateProfileMsg" xml:space="preserve">
+    <value>تم تحديث بياناتك بنجاح</value>
+  </data>
+  <data name="cPanelAddToRoleHeading" xml:space="preserve">
+    <value>إعطاء هذا المستخدم بعض الصلاحيات</value>
+  </data>
+  <data name="cPanelDeleteUserHeading" xml:space="preserve">
+    <value>حذف هذا المستخدم </value>
+  </data>
+</root>

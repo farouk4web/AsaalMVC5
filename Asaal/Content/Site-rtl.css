@@ -1,0 +1,103 @@
+﻿img {
+    margin-right: auto;
+    margin-left: 5px;
+}
+.navbar-inverse .navbar-nav > li > a i {
+    margin-right: auto;
+    margin-left: 8px;
+}
+.navbar .userPhoto {
+    margin-right: auto;
+    margin-left: 8px;
+}
+
+.navbar .notifications .dropdown-menu {
+    left: 0px;
+}
+.question .statistics p span {
+    margin-right: 5px;
+}
+.answer .dateAndDelete .deleteBtn {
+    margin-right: 10px;
+}
+.answer .answerBody .vote {
+    float: right;
+    margin-right: -10px;
+    margin-left: auto;
+}
+.answer .answerBody .content {
+    float: right;
+}
+.replays .replay {
+    margin: 10px 19% 0 0;
+}
+.sideItems .item img {
+    float: right
+}
+.sideItems .item span a:first-of-type {
+    float: right;
+    margin-left: 5px;
+    margin-right: auto;
+}
+.societies .society .editLink {
+    right: auto;
+    left: 10px;
+}
+.societyInDetails .editLink {
+    margin-right: 20px;
+    margin-left: auto;
+}
+.allCards .card span {
+    text-align: left;
+}
+.allCards .card span:first-of-type {
+    text-align: right;
+}
+.allCards .card span:last-of-type {
+    left: 20px;
+    right: auto;
+}
+#showPanelNavbar {
+    left: 10px;
+    right: auto;
+}
+.society b {
+    text-align: left;
+}
+.answer .dateAndDelete {
+    text-align: left;
+}
+.modeBtn {
+    right: auto;
+    left: 10px;
+}
+.siteSetting .checkbox label {
+    padding-left: initial;
+    padding-right: 30px;
+}
+
+
+@media (max-width: 767px) {
+    .navbar-inverse .navbar-nav > li > a i {
+        margin-left: 0;
+    }
+    .navbar .userPhoto {
+        margin: 0;
+    }
+    .panelNavbar {
+        right: 0;
+        left: auto;
+    }
+    ul.navbar-nav.navbar-right {
+        float: left
+    }
+
+    .navbar .nav li {
+        float: right
+    }
+
+    .navbar .notifications .dropdown-menu {
+        right: -230px;
+        left: auto;
+    }
+}

@@ -1,0 +1,51 @@
+﻿@using Asaal.Resources
+@using Asaal.Models
+
+<div class="panelNavbar">
+    <ul class="list-unstyled">
+
+        <li>
+            <h3>@ViewsKeys.controlPanel</h3>
+        </li>
+
+        <li>
+            <a href="/controlPanel/index">@ViewsKeys.dashboard</a>
+        </li>
+
+        <li>
+            <a href="/controlPanel/Admins">@ViewsKeys.admins</a>
+        </li>
+
+        <li>
+            <a href="/controlPanel/Supervisors">@ViewsKeys.supervisiors</a>
+        </li>
+
+        <li>
+            <a href="/controlPanel/Users">@ViewsKeys.users</a>
+        </li>
+
+        <li>
+            <a href="/controlPanel/newSociety/">@ViewsKeys.newSociety</a>
+        </li>
+
+        @if (User.IsInRole(RoleName.Admins))
+        {
+            <li>
+                <h3>@ViewsKeys.forAdminsOnlay</h3>
+            </li>
+
+            <li>
+                <a href="/controlPanel/ChangeDefaultLanguage">@ViewsKeys.changeLanguage</a>
+            </li>
+
+            <li>
+                <a href="/controlPanel/ChangeFaviconAndLogo">@ViewsKeys.changeFaviconAndLogo</a>
+            </li>
+
+            <li>
+                <a href="/controlPanel/UpdateSiteSetting">@ViewsKeys.updateSiteSetting</a>
+            </li>
+        }
+
+    </ul>
+</div>

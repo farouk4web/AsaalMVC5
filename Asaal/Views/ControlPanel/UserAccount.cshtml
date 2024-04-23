@@ -1,0 +1,158 @@
+﻿@using Asaal.Resources
+
+@using Microsoft.AspNet.Identity
+@using Asaal.Models
+
+@model Asaal.ViewModels.UserAccountVM
+@{
+    ViewBag.Title = Model.User.FullName;
+}
+
+<div class="userAccountControlPanel">
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <div class="userImg">
+                <img src="@Model.User.ProfileImgSrc" alt="..." class="img-responsive center-block img-thumbnail img-rounded" />
+            </div>
+            <div class="mainInformation text-center">
+                <h3>@Model.User.FullName</h3>
+
+                <div class="roles">
+                    @if (Model.IsAdmin)
+                    {
+                        <span class="adminsRole">@ViewsKeys.admin</span>
+                    }
+                    @if (Model.IsSupervisor)
+                    {
+                        <span class="supervisorsRole">@ViewsKeys.supervisior</span>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-8">
+            <div class="statistics">
+
+                <div class="row">
+                    <div class="item col-sm-6">
+                        <i class="glyphicon glyphicon-map-marker"></i>
+                        <span class="country" data-countryCode="@Model.User.CountryCode">@Model.User.CountryCode</span>
+                    </div>
+
+                    <div class="item col-sm-6">
+                        <i class="glyphicon glyphicon-open-file"></i>
+                        <b>@Model.User.Societies.Count() </b>
+                        <span>@ViewsKeys.society</span>
+                    </div>
+
+                    <div class="item col-sm-6">
+                        <i class="glyphicon glyphicon-align-center"></i>
+                        <b>@Model.User.Questions.Count() </b>
+                        <span>@ViewsKeys.question</span>
+                    </div>
+
+                    <div class="item col-sm-6">
+                        <i class="glyphicon glyphicon-comment"></i>
+                        <b>@Model.User.Answers.Count() </b>
+                        <span>@ViewsKeys.answer</span>
+                    </div>
+
+                    <div class="item col-sm-6">
+                        <i class="glyphicon glyphicon-repeat"></i>
+                        <b>@Model.User.Replays.Count() </b>
+                        <span>@ViewsKeys.replay</span>
+                    </div>
+
+                    <div class="item col-sm-6">
+                        <i class="glyphicon glyphicon-ok"></i>
+                        <b>@Model.User.Votes.Count() </b>
+                        <span>@ViewsKeys.doVote</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <hr />
+    @if (Model.User.Id != User.Identity.GetUserId())
+    {
+        <div class="actions">
+            <h2>@ViewsKeys.cPanelAddToRoleHeading</h2>
+
+            <div class="row text-center">
+                <div class="col-sm-6">
+                    @if (Model.IsAdmin == true)
+                    {
+                        <form action="/controlPanel/RemoveUserFromRole" method="post">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="inPanel" value="true" />
+                            <input type="hidden" name="userId" value="@Model.User.Id" />
+                            <input type="hidden" name="roleName" value="@RoleName.Admins" />
+                            <button type="submit" class="btn btn-danger">@ViewsKeys.removeFromAdmins</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form action="/controlPanel/AddUserToRole" method="post">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="inPanel" value="true" />
+                            <input type="hidden" name="userId" value="@Model.User.Id" />
+                            <input type="hidden" name="roleName" value="@RoleName.Admins" />
+                            <button type="submit" class="btn btn-primary">@ViewsKeys.addToAdmins</button>
+                        </form>
+                    }
+                </div>
+
+                <div class="col-sm-6">
+                    @if (Model.IsSupervisor == true)
+                    {
+                        <form action="/controlPanel/RemoveUserFromRole" method="post">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="inPanel" value="true" />
+                            <input type="hidden" name="userId" value="@Model.User.Id" />
+                            <input type="hidden" name="roleName" value="@RoleName.Supervisors" />
+                            <button type="submit" class="btn btn-warning">@ViewsKeys.removeFromSupervisiors</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form action="/controlPanel/AddUserToRole" method="post">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="inPanel" value="true" />
+                            <input type="hidden" name="userId" value="@Model.User.Id" />
+                            <input type="hidden" name="roleName" value="@RoleName.Supervisors" />
+                            <button type="submit" class="btn btn-success">@ViewsKeys.addToSupervisors</button>
+                        </form>
+                    }
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="removeUser">
+                <h2>@ViewsKeys.cPanelDeleteUserHeading</h2>
+
+                <form action="/controlPanel/RemoveAccount" method="post" id="removeAccountForm" class=" text-center">
+                    <span id="removeAccountWarningMsg" data-removeAccountWarningMsg="@ViewsKeys.removeAccountWarningMsg"></span>
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="inPanel" value="true" />
+                    <input type="hidden" name="userId" value="@Model.User.Id" />
+
+                    <button type="button" class="btn btn-danger" id="removeAccountBtn">
+                        <i class="glyphicon glyphicon-trash"></i> @ViewsKeys.removeAccount
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    }
+
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/removeUser")
+    @Scripts.Render("~/bundles/bootbox")
+}

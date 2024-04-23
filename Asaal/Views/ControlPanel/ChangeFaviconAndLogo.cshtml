@@ -1,0 +1,57 @@
+﻿@using Asaal.Resources
+
+@{
+    ViewBag.Title = ViewsKeys.changeFaviconAndLogo;
+}
+
+<div class="changeFaviconAndLogo">
+
+    <div class="changeFavicon">
+        <h2>@ViewsKeys.changeFavicon</h2>
+        <p class="lead">
+            @ViewsKeys.changeFaviconNote
+        </p>
+
+        <div class="alert alert-warning">
+            <strong>@ViewsKeys.warning!</strong> @ViewsKeys.changeFaviconErrorMsg
+        </div>
+
+        <form action="/ControlPanel/ChangeFavicon/" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>@ViewsKeys.changeFaviconLabel</label>
+                <input type="file" name="favicon" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn siteBtn center-block">@ViewsKeys.changeFavicon</button>
+            </div>
+        </form>
+    </div>
+
+    <hr />
+
+    <div class="changeLogo">
+        <h2>@ViewsKeys.changeLogo</h2>
+        <p class="lead">
+            @ViewsKeys.changeLogoNote
+        </p>
+
+        <div class="alert alert-warning">
+            <strong>@ViewsKeys.warning!</strong> @ViewsKeys.changeLogoErrorMsg
+        </div>
+
+        <form action="/ControlPanel/ChangeLogo/" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>@ViewsKeys.chooseLogo</label>
+                <input type="file" name="logo" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn siteBtn center-block">@ViewsKeys.changeLogo</button>
+            </div>
+        </form>
+    </div>
+
+</div>

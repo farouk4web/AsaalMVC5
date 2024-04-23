@@ -1,0 +1,116 @@
+﻿@using Asaal.Resources
+
+@model Asaal.ViewModels.SiteSettingVM
+@{
+    ViewBag.Title = ViewsKeys.updateSiteSetting;
+}
+
+<div class="siteSetting">
+
+    <form action="/ControlPanel/UpdateSiteEmail" method="post" id="siteEmail">
+        <h3>@ViewsKeys.updateSiteEmail</h3>
+
+        <div class="note">
+            <p>
+                @ViewsKeys.updateSiteEmailNote
+            </p>
+        </div>
+
+        @if (ViewBag.siteEmailIsDone == true)
+        {
+            <div class="alert alert-info">
+                <p>
+                    @ViewsKeys.succesUpdateSiteEmailMsg
+                </p>
+            </div>
+        }
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.SiteEmail.Email)
+            @Html.TextBoxFor(m => m.SiteEmail.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.SiteEmail.Email)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.SiteEmail.Password)
+            @Html.PasswordFor(m => m.SiteEmail.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.SiteEmail.Password)
+        </div>
+
+        <div class="form-group">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn siteBtn center-block">@ViewsKeys.save</button>
+        </div>
+    </form>
+
+    <hr />
+
+    <form action="/ControlPanel/UpdateSiteDomain" method="post" id="siteDomain">
+        <h3>@ViewsKeys.updateSiteDomain</h3>
+
+        <div class="note">
+            <p>
+                @ViewsKeys.updateSiteDomainNote
+            </p>
+        </div>
+
+        @if (ViewBag.siteDomainDone == true)
+        {
+            <div class="alert alert-info">
+                <p>
+                    @ViewsKeys.succesUpdateSiteDomainMsg
+                </p>
+            </div>
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.SiteDomain.SiteUrl)
+            @Html.TextBoxFor(m => m.SiteDomain.SiteUrl, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.SiteDomain.SiteUrl)
+        </div>
+
+        <div class="form-group">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn siteBtn center-block">@ViewsKeys.save</button>
+        </div>
+    </form>
+
+    <hr />
+
+    <form action="/ControlPanel/EnableMesages/" method="post" id="enableMesages">
+        <h3>@ViewsKeys.SendEmailsOrNot</h3>
+
+        <div class="note">
+            <p>
+                @ViewsKeys.updateSendEmailOrNotNote
+            </p>
+        </div>
+        
+        @if (ViewBag.SendEmailOrNotDone == true)
+        {
+            <div class="alert alert-info">
+                <p>
+                    @ViewsKeys.succesUpdateSendEmailOrNotMsg
+                </p>
+            </div>
+        }
+        
+        <div class="checkbox">
+            <label class="form-control">
+                @Html.CheckBoxFor(m => m.SendEmailOrNot) @ViewsKeys.sendEmailsBySite
+            </label>
+        </div>
+
+        <div class="form-group">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn siteBtn center-block">@ViewsKeys.save</button>
+        </div>
+    </form>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

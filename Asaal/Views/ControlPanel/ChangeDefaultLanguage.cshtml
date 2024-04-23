@@ -1,0 +1,29 @@
+﻿@using Asaal.Resources
+
+@{
+    ViewBag.Title = ViewsKeys.changeDefaultLanguage;
+}
+
+<div class="changeLanguage">
+
+    <h2>@ViewsKeys.changeDefaultLanguage</h2>
+    <p class="lead">
+        @ViewsKeys.changeLanguageNote
+    </p>
+
+    <form action="/ControlPanel/ChangeDefaultLanguage" method="post">
+
+        <div class="form-group">
+            <select class="form-control" name="language">
+                <option value="ar-EG">اللغة العربية</option>
+                <option value="en-AU">English Language</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn siteBtn center-block">@ViewsKeys.changeLanguage</button>
+        </div>
+    </form>
+
+</div>

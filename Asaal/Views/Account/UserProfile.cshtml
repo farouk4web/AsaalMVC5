@@ -1,0 +1,448 @@
+﻿@using Asaal.Resources
+
+@using Asaal.Models
+@using Microsoft.AspNet.Identity
+
+@model Asaal.ViewModels.UserProfileVM
+@{
+    ViewBag.Title = Model.User.FullName;
+}
+
+<div class="userProfile">
+    <div class="container">
+
+        <div class="mainInformation text-center">
+            <div class="userImg">
+                <img src="@Model.User.ProfileImgSrc" alt="" class="img-responsive center-block img-circle" />
+                @if (User.Identity.IsAuthenticated && User.Identity.GetUserId() == Model.User.Id)
+                {
+                    <p>
+                        <i class="glyphicon glyphicon-camera" title="@ViewsKeys.changeProfilePicture" id="cameraBtn"></i>
+                    </p>
+
+                    <form action="/Manage/ChangeProfilePicture/" method="post" enctype="multipart/form-data" id="userPictureForm" hidden>
+                        @Html.AntiForgeryToken()
+                        <input type="file" name="profilePicture" id="userPictureInput" />
+                    </form>
+                }
+
+            </div>
+
+            @if (ViewBag.changePhotoIsDone == true)
+            {
+                <div class="alert alert-success">
+                    <p>
+                        @ViewsKeys.succesChangePhotoMsg
+                    </p>
+                </div>
+            }
+
+            <h2>@Model.User.FullName</h2>
+
+            <div class="roles">
+                @if (Model.IsAdmin)
+                {
+                    <span class="adminsRole">@ViewsKeys.admin</span>
+                }
+                @if (Model.IsSupervisor)
+                {
+                    <span class="supervisorsRole">@ViewsKeys.supervisior</span>
+                }
+            </div>
+            <div class="countryOfUser">
+                <i class="glyphicon glyphicon-map-marker"></i>
+                <span class="country" data-countryCode="@Model.User.CountryCode">@Model.User.CountryCode</span>
+            </div>
+        </div>
+
+        @if (User.IsInRole(RoleName.Admins))
+        {
+            <div class="actions text-center">
+                <div class="row">
+                    <div class="col-sm-4">
+                        @if (Model.IsAdmin == true)
+                        {
+                            <form action="/controlPanel/RemoveUserFromRole" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="inPanel" value="false" />
+                                <input type="hidden" name="userId" value="@Model.User.Id" />
+                                <input type="hidden" name="roleName" value="@RoleName.Admins" />
+                                <button type="submit" class="btn btn-danger">@ViewsKeys.removeFromAdmins</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form action="/controlPanel/AddUserToRole" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="inPanel" value="false" />
+                                <input type="hidden" name="userId" value="@Model.User.Id" />
+                                <input type="hidden" name="roleName" value="@RoleName.Admins" />
+                                <button type="submit" class="btn btn-primary">@ViewsKeys.addToAdmins</button>
+                            </form>
+                        }
+                    </div>
+
+                    <div class="col-sm-4">
+                        @if (Model.IsSupervisor == true)
+                        {
+                            <form action="/controlPanel/RemoveUserFromRole" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="inPanel" value="false" />
+                                <input type="hidden" name="userId" value="@Model.User.Id" />
+                                <input type="hidden" name="roleName" value="@RoleName.Supervisors" />
+                                <button type="submit" class="btn btn-warning">@ViewsKeys.removeFromSupervisiors</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form action="/controlPanel/AddUserToRole" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="inPanel" value="false" />
+                                <input type="hidden" name="userId" value="@Model.User.Id" />
+                                <input type="hidden" name="roleName" value="@RoleName.Supervisors" />
+                                <button type="submit" class="btn btn-success">@ViewsKeys.addToSupervisors</button>
+                            </form>
+                        }
+                    </div>
+
+                    <div class="cool-sm-4">
+                        <form action="/controlPanel/RemoveAccount" method="post" id="removeAccountForm">
+                            <span id="removeAccountWarningMsg" data-removeAccountWarningMsg="@ViewsKeys.removeAccountWarningMsg"></span>
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="inPanel" value="false" />
+                            <input type="hidden" name="userId" value="@Model.User.Id" />
+
+                            <button type="button" class="btn btn-danger" id="removeAccountBtn">
+                                <i class="glyphicon glyphicon-trash"></i> @ViewsKeys.removeAccount
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+        <div class="userStatistics text-center">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h4 data-target="questions" class="active">
+                        <i class="glyphicon glyphicon-align-center"></i> @Model.User.Questions.Count() @ViewsKeys.question
+                    </h4>
+                </div>
+
+                <div class="col-sm-3">
+                    <h4 data-target="votes">
+                        <i class="glyphicon glyphicon-ok"></i> @Model.User.Votes.Count() @ViewsKeys.doVote
+                    </h4>
+                </div>
+
+                <div class="col-sm-3">
+                    <h4 data-target="answers">
+                        <i class="glyphicon glyphicon-comment"></i> @Model.User.Answers.Count() @ViewsKeys.answer
+                    </h4>
+                </div>
+
+                <div class="col-sm-3">
+                    <h4 data-target="replays">
+                        <i class="glyphicon glyphicon-comment"></i> @Model.User.Replays.Count() @ViewsKeys.replay
+                    </h4>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="userJobs">
+            <div class="item" id="questions">
+                @if (Model.User.Questions.Count() == 0)
+                {
+                    <p class="sorryMsg">
+                        @ViewsKeys.sorryMsg
+                    </p>
+                }
+
+                @foreach (var question in Model.User.Questions)
+                {
+                    <div class="question">
+                        <div class="header">
+                            <div class="statistics">
+                                <p>
+                                    <i class="glyphicon glyphicon-menu-hamburger"></i>
+                                    <span>
+                                        <a href="/societies/societyInDetails/@question.SocietyId">@question.Society.Name</a>
+                                    </span>
+                                </p>
+                                <p>
+                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                    <span>@question.Views @ViewsKeys.view</span>
+                                </p>
+                                <p>
+                                    <i class="glyphicon glyphicon-comment"></i>
+                                    <span>@question.Answers.Count() @ViewsKeys.answer</span>
+                                </p>
+                                <p>
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                    <span>@question.PublishDate</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="clickbody">
+                            <a href="/questions/questionIndetails/@question.Id" class="overlayLink"></a>
+                            <h3>@question.Title</h3>
+                            <p class="questionBody">
+                                @question.Content
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+
+
+
+            <div class="item" id="votes">
+                @if (Model.User.Votes.Count() == 0)
+                {
+                    <p class="sorryMsg">
+                        @ViewsKeys.sorryMsg
+                    </p>
+                }
+
+                @foreach (var vote in Model.User.Votes)
+                {
+                    <div class="answer" data-id="@vote.Answer.Id" id="@vote.Answer.Id">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4 class="goToLink">
+                                    <a href="/questions/questionInDetails/@vote.Answer.QuestionId#@vote.Answer.Id">
+                                        اذهب إلي السؤال
+                                    </a>
+                                </h4>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="dateAndDelete">
+                                    <span class="date"><i class="glyphicon glyphicon-calendar"></i> @vote.Answer.PublishDate</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="answerBody">
+                            <div class="content">
+                                <p>
+                                    @vote.Answer.Content
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="replaysControls row">
+                            <div class="col-xs-6">
+                                @{
+                                    var votesCount = vote.Answer.Votes.Where(m => m.IsGoodAnswer == true).Count() - vote.Answer.Votes.Where(m => m.IsGoodAnswer == false).Count();
+                                }
+                                <h5>@votesCount @ViewsKeys.doVote</h5>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <h5>@vote.Answer.Replays.Count() @ViewsKeys.replay</h5>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+
+
+
+            <div class="item" id="answers">
+                @if (Model.User.Answers.Count() == 0)
+                {
+                    <p class="sorryMsg">
+                        @ViewsKeys.sorryMsg
+                    </p>
+                }
+
+                @foreach (var answer in Model.User.Answers)
+                {
+                    <div class="answer" data-id="@answer.Id" id="@answer.Id">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4 class="goToLink">
+                                    <a href="/questions/questionInDetails/@answer.QuestionId#@answer.Id">
+                                        اذهب إلي السؤال
+                                    </a>
+                                </h4>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="dateAndDelete">
+                                    <span class="date">
+                                        <i class="glyphicon glyphicon-calendar"></i> &nbsp;
+                                        @answer.PublishDate
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="answerBody">
+                            <div class="content">
+                                <p>
+                                    @answer.Content
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="replaysControls row">
+                            <div class="col-xs-6">
+                                @{
+                                    var votesCount = answer.Votes.Where(m => m.IsGoodAnswer == true).Count() - answer.Votes.Where(m => m.IsGoodAnswer == false).Count();
+                                }
+                                <h5>@votesCount @ViewsKeys.doVote</h5>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <h5>@answer.Replays.Count() @ViewsKeys.replay</h5>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+
+
+
+            <div class="item" id="replays">
+                @if (Model.User.Replays.Count() == 0)
+                {
+                    <p class="sorryMsg">
+                        @ViewsKeys.sorryMsg
+                    </p>
+                }
+
+                @foreach (var replay in Model.User.Replays)
+                {
+                    <div class="answer replay" data-id="@replay.Id">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4 class="goToLink">
+                                    <a href="/questions/questionInDetails/@replay.Answer.QuestionId#@replay.AnswerId">
+                                        اذهب إلي السؤال
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="dateAndDelete">
+                                    <span class="date">
+                                        <i class="glyphicon glyphicon-calendar"></i> &nbsp;
+                                        @replay.PublishDate
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="answerBody">
+                            <div class="content">
+                                <p>
+                                    @replay.Content
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+
+        @if (User.Identity.GetUserId() == Model.User.Id)
+        {
+            <div class="allForms">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form action="/Manage/UpdateProfile/" method="post">
+                            <h4>@ViewsKeys.updateMyInfo</h4>
+
+                            <hr />
+
+                            @if (ViewBag.updateUserInfoIsDone == true)
+                            {
+                                <div class="alert alert-success">
+                                    <p>
+                                        @ViewsKeys.succesUpdateProfileMsg
+                                    </p>
+                                </div>
+                            }
+
+                            <div class="form-group">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.UpdateProfile.FullName)
+                                @Html.TextBoxFor(m => m.UpdateProfile.FullName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.UpdateProfile.FullName)
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.UpdateProfile.CountryCode)
+                                <select class="form-control" id="UpdateProfile_CountryCode" name="UpdateProfile.CountryCode" data-val="true" data-val-required="@ViewsKeys.required">
+                                    <option value="">@ViewsKeys.chooseCountry</option>
+                                </select>
+                                @Html.ValidationMessageFor(m => m.UpdateProfile.CountryCode)
+                            </div>
+
+                            <div class="form-group">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-default siteBtn">@ViewsKeys.update</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <form action="/Manage/ChangePassword/" method="post">
+                            <h4>@ViewsKeys.changePassword</h4>
+
+                            @if (ViewBag.changePasswordIsDone == true)
+                            {
+                                <div class="alert alert-success">
+                                    <p>
+                                        @ViewsKeys.succesChangePasswordMsg
+                                    </p>
+                                </div>
+                            }
+
+                            <hr />
+
+                            <div class="form-group">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.ChangePassword.OldPassword)
+                                @Html.PasswordFor(m => m.ChangePassword.OldPassword, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.ChangePassword.OldPassword)
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.ChangePassword.NewPassword)
+                                @Html.PasswordFor(m => m.ChangePassword.NewPassword, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.ChangePassword.NewPassword)
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.ChangePassword.ConfirmPassword)
+                                @Html.PasswordFor(m => m.ChangePassword.ConfirmPassword, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.ChangePassword.ConfirmPassword)
+                            </div>
+                            <div class="form-group">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-default siteBtn">@ViewsKeys.changePassword</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootbox")
+    @Scripts.Render("~/bundles/removeUser")
+    @Scripts.Render("~/bundles/changeUserPicture")
+    @Scripts.Render("~/bundles/populateCountries")
+}

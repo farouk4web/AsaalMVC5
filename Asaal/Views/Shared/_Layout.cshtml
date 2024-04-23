@@ -1,0 +1,50 @@
+﻿@using Asaal.Resources
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="@ViewsKeys.siteDescription4meta" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>@ViewBag.Title - @ViewsKeys.appName</title>
+
+        @if (UICulture == "ar-EG")
+        {
+            @Styles.Render("~/Content/css-rtl")
+        }
+        else
+        {
+            @Styles.Render("~/Content/css")
+        }
+
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+
+        @Html.Partial("_Navbar")
+
+        <div class="contentOfSite">
+            @RenderBody()
+
+            <span class="modeBtn" id="setDarkMode">
+                <i class="glyphicon glyphicon-sunglasses"></i>
+            </span>
+
+            <span class="modeBtn" id="setNormalMode">
+                <i class="glyphicon glyphicon-certificate"></i>
+            </span>
+        </div>
+
+        @Html.Partial("_Footer")
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/custom")
+        @RenderSection("scripts", required: false)
+        <span hidden id="uiCulture" data-uiCulture="@UICulture"></span>
+
+
+        @Html.Partial("_RemoveAds")
+    </body>
+</html>

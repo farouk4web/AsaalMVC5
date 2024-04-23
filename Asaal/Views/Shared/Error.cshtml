@@ -1,0 +1,18 @@
+﻿@using Asaal.Resources
+@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = ViewsKeys.errorPage;
+}
+<div class="errorPage">
+    <div class="container">
+
+        <h2 class="text-danger">@ViewsKeys.errorPage</h2>
+
+        <div class="alert alert-danger">
+            <p class="text-danger">
+                @ViewsKeys.errorPageParagraph
+            </p>
+        </div>
+    </div>
+</div>

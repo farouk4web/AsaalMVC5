@@ -1,0 +1,60 @@
+﻿@using Asaal.Resources
+
+@model Asaal.Models.RegisterViewModel
+@{
+    ViewBag.Title = ViewsKeys.register;
+}
+
+<div class="register accountForm">
+    <div class="container">
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+        {
+            <div class="formHead">
+                <hr />
+                <h3>@ViewsKeys.register</h3>
+            </div>
+
+            <div class="form-group">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = ViewsKeys.fullName })
+                @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <select class="form-control" id="CountryCode" name="CountryCode" data-val="true" data-val-required="@ViewsKeys.required">
+                    <option value="">@ViewsKeys.chooseCountry</option>
+                </select>
+                @Html.ValidationMessageFor(m => m.CountryCode, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = ViewsKeys.email })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = ViewsKeys.password })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-default siteBtn">@ViewsKeys.register</button>
+            </div>
+
+            <div class="form-group">
+                <p>
+                    @ViewsKeys.alreadyHaveAnAccount <a href="/Account/login">@ViewsKeys.loginHere</a>
+                </p>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/populateCountries")
+}

@@ -1,0 +1,50 @@
+﻿@using Asaal.Resources
+
+@model Asaal.Models.Society
+@{
+    if (Model.Id == 0)
+    {
+        ViewBag.Title = ViewsKeys.newSociety;
+    }
+    else
+    {
+        ViewBag.Title = ViewsKeys.update + " " + ViewsKeys.society + " ' " + Model.Name+" '";
+    }
+}
+<div class="societyForm">
+
+    <form action="/ControlPanel/SaveSociety" method="post">
+        <h2 class="text-center">@ViewBag.Title</h2>
+
+        <div class="note">
+            <p>
+                <b>@ViewsKeys.remember</b>
+                @ViewsKeys.societyNote
+            </p>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(t => t.Name)
+            @Html.TextBoxFor(t => t.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(t => t.Name)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(c => c.Description)
+            @Html.TextAreaFor(c => c.Description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(c => c.Description)
+        </div>
+
+        <div class="form-group">
+            @Html.HiddenFor(m => m.Id)
+            @Html.AntiForgeryToken()
+
+            <button type="submit" class="btn siteBtn center-block">@ViewsKeys.save</button>
+        </div>
+    </form>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

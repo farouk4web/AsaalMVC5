@@ -1,0 +1,70 @@
+﻿@using Asaal.Resources
+
+@model Asaal.ViewModels.ControlPanelHomeVM
+@{
+    ViewBag.Title = ViewsKeys.controlPanel;
+}
+<div class="dashboard">
+
+    <h2>@ViewsKeys.dashboard</h2>
+
+    <div class="allCards">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card" data-color="darkcyan">
+                    <span>@Model.NumberOfAdmins</span>
+                    <span>@ViewsKeys.admins</span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card" data-color="deeppink">
+                    <span>@Model.NumberOfSupervisiors</span>
+                    <span>@ViewsKeys.supervisiors</span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card" data-color="rebeccapurple">
+                    <span>@Model.NumberOfUsers</span>
+                    <span>@ViewsKeys.users</span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card" data-color="saddlebrown">
+                    <span>@Model.NumberOfQuestions</span>
+                    <span>@ViewsKeys.question</span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <span>@Model.NumberOfSocieties</span>
+                    <span>@ViewsKeys.society</span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card" data-color="crimson">
+                    <span>@Model.NumberOfNotifications</span>
+                    <span>@ViewsKeys.notification</span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card" data-color="#970a72">
+                    <span>@Model.NumberOfAnswers</span>
+                    <span>@ViewsKeys.answer</span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card" data-color="#09b53d">
+                    <span>@Model.NumberOfReplays</span>
+                    <span>@ViewsKeys.replay</span>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card" data-color="chocolate">
+                    <span>@Model.NumberOfAnswersWithReplays</span>
+                    <span>@ViewsKeys.answersWithReplays</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

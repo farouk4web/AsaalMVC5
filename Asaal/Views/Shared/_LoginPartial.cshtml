@@ -1,0 +1,87 @@
+﻿@using Asaal.Resources
+
+@using Microsoft.AspNet.Identity
+@using Asaal.Models
+
+@{
+    ApplicationDbContext _context = new ApplicationDbContext();
+    var currentUser = _context.Users.Find(User.Identity.GetUserId());
+}
+
+@if (Request.IsAuthenticated)
+{
+<ul class="nav navbar-nav navbar-right accountLinks">
+
+    
+
+    <li>
+        <a href="/Account/UserProfile/@currentUser.Id" title="@currentUser.FullName" class="userInNavbar">
+            <img src="@currentUser.ProfileImgSrc" alt="" class="img-circle userPhoto" />
+            <span class="hidden-xs hidden-sm">@currentUser.FullName</span>
+        </a>
+    </li>
+
+    <li class="dropdown notifications">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="@ViewsKeys.notifications">
+            <i class="glyphicon glyphicon-globe"></i>
+            <span class="hidden-xs">@ViewsKeys.notifications</span>
+        </a>
+
+        <ul class="dropdown-menu">
+            @if (currentUser.Notifications.Count() == 0)
+            {
+                <li>
+                    <span class="zeroNotification">@ViewsKeys.sorryMsg</span>
+                </li>
+            }
+            @foreach (var item in currentUser.Notifications.OrderByDescending(m => m.CreatedDate))
+            {
+                <li>
+                    <a href="/questions/questionIndetails/@item.QuestionId/#@item.AnswerId"></a>
+                    <span>@item.Content</span>
+                    <time>
+                        <i class="glyphicon glyphicon-dashboard"></i> @item.CreatedDate
+                    </time>
+                </li>
+            }
+        </ul>
+    </li>
+
+    @if (User.IsInRole(RoleName.Admins) || User.IsInRole(RoleName.Supervisors))
+    {
+        <li>
+            <a href="/ControlPanel/" title="@ViewsKeys.controlPanel">
+                <i class="glyphicon glyphicon-dashboard"></i>
+            </a>
+        </li>
+    }
+
+    <li>
+        <a href="javascript:document.getElementById('logoutForm').submit()" title="@ViewsKeys.logOff">
+            <i class="glyphicon glyphicon-log-out"></i>
+        </a>
+    </li>
+</ul>
+
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "hidden" }))
+    {
+        @Html.AntiForgeryToken()
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right accountLinks">
+        <li>
+            <a href="/Account/Register/" id="registerLink">
+                <i class="glyphicon glyphicon-user"></i>
+                <span class="hidden-xs">@ViewsKeys.register</span>
+            </a>
+        </li>
+        <li>
+            <a href="/Account/Login/" id="loginLink">
+                <i class="glyphicon glyphicon-log-in"></i>
+                <span class="hidden-xs">@ViewsKeys.login</span>
+            </a>
+        </li>
+    </ul>
+}

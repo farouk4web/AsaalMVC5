@@ -1,0 +1,19 @@
+﻿@using Asaal.Resources
+
+@{
+    ViewBag.Title = ViewsKeys.confirmEmail;
+}
+
+<div class="confirmEmail accountConfirmation text-center">
+    <div class="container">
+
+        <i class="glyphicon glyphicon-ok-sign"></i>
+        <h2>@ViewsKeys.confirmEmail</h2>
+
+        <p class="lead">
+            @ViewsKeys.confirmEmailMsg
+            @Html.ActionLink(ViewsKeys.loginHere, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        </p>
+
+    </div>
+</div>

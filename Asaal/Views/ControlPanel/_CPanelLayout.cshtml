@@ -1,0 +1,63 @@
+﻿@using Asaal.Resources
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="@ViewsKeys.siteDescription4meta" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>@ViewBag.Title - @ViewsKeys.appName</title>
+
+        @if (UICulture == "ar-EG")
+        {
+            @Styles.Render("~/Content/css-rtl")
+        }
+        else
+        {
+            @Styles.Render("~/Content/css")
+        }
+
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body class="controlPanel">
+
+        @Html.Partial("_Navbar")
+
+        <div class="contentOfSite">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-3">
+                        @Html.Partial("_PanelNavbar")
+                    </div>
+                    <div class="col-sm-9">
+                        <span id="showPanelNavbar">
+                            <i class="glyphicon glyphicon-menu-hamburger"></i>
+                        </span>
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+
+            <span class="modeBtn" id="setDarkMode">
+                <i class="glyphicon glyphicon-sunglasses"></i>
+            </span>
+
+            <span class="modeBtn" id="setNormalMode">
+                <i class="glyphicon glyphicon-certificate"></i>
+            </span>
+        </div>
+
+        @Html.Partial("_Footer")
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/custom")
+        @Scripts.Render("~/bundles/controlPanel")
+        @RenderSection("scripts", required: false)
+        <span hidden id="uiCulture" data-uiCulture="@UICulture"></span>
+
+
+        @Html.Partial("_RemoveAds")
+    </body>
+</html>
